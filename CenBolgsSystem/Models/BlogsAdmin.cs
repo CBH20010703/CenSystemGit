@@ -34,5 +34,19 @@ namespace CenBolgsSystem.Models
         {
             throw new NotImplementedException();
         }
+
+        public bool SetPassWord(string new_password, string old_password)
+        {
+            using (db_CenSystemEntities db = new db_CenSystemEntities())
+            {
+                var list = db.Admin.FirstOrDefault(c => c.ad_PassWord == old_password);
+                if (list == null)
+                {
+                    return false;
+                }
+             list.ad_PassWord = new_password;
+             return  db.SaveChanges() <= 0 ? false : true;
+            }
+        }
     }
 }

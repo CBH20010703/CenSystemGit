@@ -190,7 +190,7 @@ namespace CenBolgsSystem.Models
                             db.Article.Remove(list);
                         }                      
                     }
-                    return db.SaveChanges() <= 0 ? false : true;
+                    return db.SaveChanges() <= 0;
               
                 }
                 catch (Exception)
@@ -207,15 +207,13 @@ namespace CenBolgsSystem.Models
                 using (db_CenSystemEntities db = new db_CenSystemEntities())
                 {
                     List<BlogsLeave> list = db.BlogsLeave.Where(c => c.leave_articleId == art.article_Id).ToList();
-                    if (list == null)
-                    {
-                        return true;
-                    }
+                    if (list == null) return true;
+                   
                     foreach (var item in list)
                     {
                         db.BlogsLeave.Remove(item);
                     }
-                    return db.SaveChanges() <= 0 ? false : true;
+                    return db.SaveChanges() <= 0 ;
                 }
             }
             catch (Exception)
@@ -265,6 +263,7 @@ namespace CenBolgsSystem.Models
 
                 if (file == null)
                 {
+                    
                     queryList.article_Content = d.article_Content;
                     queryList.article_Type = d.article_Type;
                     queryList.article_Title = d.article_Title;
@@ -318,7 +317,7 @@ namespace CenBolgsSystem.Models
                 //System.IO.File.Delete(@"path");
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 return false;
             }

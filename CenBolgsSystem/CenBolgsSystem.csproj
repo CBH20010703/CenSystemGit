@@ -926,7 +926,6 @@
     <Compile Include="Models\BlogsLeave.cs">
       <DependentUpon>BologsData.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BlogsPlant.cs" />
     <Compile Include="Models\BlogsUser.cs" />
     <Compile Include="Models\BologsData.Context.cs">
       <AutoGen>True</AutoGen>
