@@ -1,0 +1,215 @@
+{
+  "homeInfo": {
+    "title": "首页",
+    "href": "/Home/Welcome"
+  },
+  "logoInfo": {
+    "title": "Cen",
+    "image": "/images/logo.png",
+    "href": ""
+  },
+  "menuInfo": [
+    {
+      "title": "常规管理",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "系统管理",
+          "href": "",
+          "icon": "layui-icon layui-icon-app",
+          "target": "_self",
+          "child": [
+            {
+              "title": "系统",
+              "href": "/Home/Welcome",
+              "icon": "layui-icon layui-icon-chart-screen",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "Admin管理",
+          "href": "",
+          "icon": "layui-icon layui-icon-senior",
+          "target": "_self",
+          "child": [
+            {
+              "title": "Admin列表",
+              "href": "/Admin/List",
+              "icon": "layui-icon layui-icon-table",
+              "target": "_self"
+            },
+            {
+              "title": "Admin授权",
+              "href": "/Admin/EditPower",
+              "icon": "layui-icon layui-icon-auz",
+              "target": "_self"
+            }
+          ]
+
+        },
+        {
+          "title": "用户管理",
+          "href": "",
+          "icon": "layui-icon layui-icon-username",
+          "target": "_self",
+          "child": [
+            {
+              "title": "用户列表",
+              "href": "/User/List",
+              "icon": "layui-icon layui-icon-table",
+              "target": "_self"
+            },
+            {
+              "title": "用户授权",
+              "href": "/User/EditPower",
+              "icon": "layui-icon layui-icon-auz",
+              "target": "_self"
+            }
+          ]
+
+        },
+
+        {
+          "title": "文章管理",
+          "href": "",
+          "icon": "fa fa-window-maximize",
+          "target": "_self",
+          "child": [
+            {
+              "title": "文章列表",
+              "href": "/Home/Index",
+              "icon": "layui-icon layui-icon-list",
+              "target": "_self"
+            },
+            {
+              "title": "添加文章",
+              "href": "/Home/EditArticle",
+              "icon": "layui-icon layui-icon-add-circle",
+              "target": "_self"
+            }
+          ]
+
+        },
+        {
+          "title": "开发日志",
+          "href": "",
+          "icon": "layui-icon layui-icon-senior",
+          "target": "_self",
+          "child": [
+            {
+              "title": "更新日志",
+              "href": "/Error/Log",
+              "icon": "layui-icon layui-icon-code-circle",
+              "target": "_self"
+            }
+          
+          ]
+
+        }
+      ]
+    },
+    {
+      "title": "积分管理",
+      "icon": "fa fa-lemon-o",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "增加积分",
+          "href": "/Home/Index",
+          "icon": "fa fa-dot-circle-o",
+          "target": "_self"
+        },
+        {
+          "title": "删除积分",
+          "href": "/Home/Index",
+          "icon": "fa fa-adn",
+          "target": "_self"
+        },
+        {
+          "title": "清空积分",
+          "href": "/Home/123",
+          "icon": "fa fa-dashboard",
+          "target": "_self"
+        },
+        {
+          "title": "下拉选择",
+          "href": "/Home/Index",
+          "icon": "fa fa-angle-double-down",
+          "target": "_self"
+        },
+        {
+          "title": "文件上传",
+          "href": "/Home/Index",
+          "icon": "fa fa-arrow-up",
+          "target": "_self"
+        },
+        {
+          "title": "富文本编辑器",
+          "href": "/Home/Index",
+          "icon": "fa fa-edit",
+          "target": "_self"
+        },
+        {
+          "title": "省市县区选择器",
+          "href": "/Home/Index",
+          "icon": "fa fa-rocket",
+          "target": "_self"
+        }
+      ]
+    },
+    {
+      "title": "其它管理",
+      "icon": "fa fa-slideshare",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "多级菜单",
+          "href": "",
+          "icon": "fa fa-meetup",
+          "target": "",
+          "child": [
+            {
+              "title": "按钮1",
+              "href": "/Home/button.html?v=1",
+              "icon": "fa fa-calendar",
+              "target": "_self",
+              "child": [
+                {
+                  "title": "按钮2",
+                  "href": "page/button.html?v=2",
+                  "icon": "fa fa-snowflake-o",
+                  "target": "_self",
+                  "child": [
+                    {
+                      "title": "按钮3",
+                      "href": "page/button.html?v=3",
+                      "icon": "fa fa-snowflake-o",
+                      "target": "_self"
+                    },
+                    {
+                      "title": "表单4",
+                      "href": "page/form.html?v=1",
+                      "icon": "fa fa-calendar",
+                      "target": "_self"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Icon图标库",
+          "href": "page/iconimg一览.html",
+          "icon": "fa fa-superpowers",
+          "target": "_self"
+        }
+      ]
+    }
+  ]
+}

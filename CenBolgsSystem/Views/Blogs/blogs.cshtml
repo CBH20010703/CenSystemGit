@@ -1,0 +1,289 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Scripts/layui-v2.5.5/css/layui.css" rel="stylesheet" />
+    <link href="~/Fonts/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/blogs/gloable.css" rel="stylesheet" />
+    <link href="~/Content/blogs/master.css" rel="stylesheet" />
+    <link href="~/Content/blogs/nprogress.css" rel="stylesheet" />
+    <link href="~/Content/blogs/blog.css" rel="stylesheet" />
+
+    <style>
+        .addactive {
+            position: relative;
+        }
+
+            .addactive:after {
+                display: block;
+                content: "";
+                position: absolute;
+                width: 5px;
+                height: 40px;
+                background: #6bc30d;
+                right: 0;
+                top: 0;
+                z-index: 999;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+    </div>
+    <header class="gird-header">
+        <div class="header-fixed">
+            <div class="header-inner">
+                <a href="javascript:void(0)" class="header-logo" id="logo">Mr.cen</a>
+                <nav class="nav" id="nav">
+                    <ul>
+
+                        <li><a href="/Blogs/blogs">首页</a></li>
+                        <li><a href="/Blogs/index">博客</a></li>
+                        <li><a href="#">留言</a></li>
+                        <li><a href="#">日记</a></li>
+                        <li><a href="#">友链</a></li>
+
+                    </ul>
+                </nav>
+                <a href="/User/QQLogin" class="blog-user">
+                    <i class="fa fa-qq"></i>
+                </a>
+                <a class="phone-menu">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="doc-container" id="doc-container">
+        <div class="container-fixed">
+            <div class="col-content">
+                <div class="inner">
+                    <article class="article-list bloglist" id="LAY_bloglist">
+                    </article>
+                    <div id="test1"></div>
+                </div>
+            </div>
+            <div class="col-other">
+                <div class="inner">
+                    <div class="other-item" id="categoryandsearch">
+                        <div class="search">
+                            <label class="search-wrap">
+                                <input type="text" id="searchtxt" placeholder="输入关键字搜索" />
+                                <span class="search-icon" id="SearchBtn">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                            </label>
+                            <ul class="search-result"></ul>
+                        </div>
+                        <ul class="category mt20" id="category">
+                            <li data-index="0" class="addactive"><a href="#">全部文章</a></li>
+                            <li data-index="1"><a href="#">C#</a></li>
+                            <li data-index="2"><a href="#">Java</a></li>
+                            <li data-index="3"><a href="#">JavaScript</a></li>
+                            <li data-index="4"><a href="#">Vue</a></li>
+                            <li data-index="5"><a href="#">Node</a></li>
+                            <li data-index="6"><a href="#">其他文章</a></li>
+                        </ul>
+                    </div>
+                    <!--右边悬浮 平板或手机设备显示-->
+                    <div class="category-toggle"><i class="layui-icon">&#xe603;</i></div>
+                    <div class="article-category" id="articlephone">
+                        <div class="article-category-title">分类导航</div>
+                        <a href="/Blog/Article/1/">Java</a>
+                        <a href="/Blog/Article/2/">前端</a>
+                        <a href="/Blog/Article/3/">Python</a>
+                        <a href="/Blog/Article/4/">PHP</a>
+                        <a href="/Blog/Article/5/">其它</a>
+                        <div class="f-cb"></div>
+                    </div>
+                    <!--遮罩-->
+                    <div class="blog-mask animated layui-hide"></div>
+                    <div class="other-item">
+                        <h5 class="other-item-title">快速浏览</h5>
+                        <div class="inner">
+                            <ul class="hot-list-article" id="hot-article">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="other-item">
+                        <h5 class="other-item-title">置顶推荐</h5>
+                        <div class="inner">
+                            <ul class="hot-list-article">
+                                <li> <a href="read.html?id=17">JavaScript new Date 处理毫秒转换成时间</a></li>
+                                <li> <a href="read.html?id=18">原生ajax 的简单封装</a></li>
+                                <li> <a href="read.html?id=16">ASP.NET MVC 通过pagelist 实现分页功能</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="other-item">
+                        <h5 class="other-item-title">最近访客</h5>
+                        <div class="inner">
+                            <dl class="vistor">
+                                <dd><a href="javasript:;"><img src="/images/a1.png"><cite>Anonymous</cite></a></dd>
+                                <dd><a href="javasript:;"><img src="/images/a4.png"><cite>Dekstra</cite></a></dd>
+                                <dd><a href="javasript:;"><img src="/images/a2.png"><cite>惜i</cite></a></dd>
+                                <dd><a href="javasript:;"><img src="/images/a3.png"><cite>↙Aㄨ计划 ◆莪↘</cite></a></dd>
+                                <dd><a href="javasript:;"><img src="/images/a4.png"><cite>.</cite></a></dd>
+                                <dd><a href="javasript:;"><img src="/images/a1.png"><cite>Lambert.</cite></a></dd>
+                                <dd><a href="javasript:;"><img src="/images/a2.png"><cite>64ღ</cite></a></dd>
+                                <dd><a href="javasript:;"><img src="/images/a3.png"><cite>doBoor</cite></a></dd>
+                                <dd><a href="javasript:;"><img src="/images/a4.png"><cite>毛毛小妖</cite></a></dd>
+                                <dd><a href="javasript:;"><img src="/images/a1.png"><cite>NULL</cite></a></dd>
+                                <dd><a href="javasript:;"><img src="/images/a2.png"><cite>吓一跳</cite></a></dd>
+                                <dd><a href="javasript:;"><img src="/images/a3.png"><cite>如初</cite></a></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="grid-footer">
+        <div class="footer-fixed">
+            <div class="copyright">
+                <div class="info">
+                    <div class="contact">
+                        <a href="javascript:void(0)" class="github" target="_blank"><i class="fa fa-github"></i></a>
+                        <a href="https://wpa.qq.com/msgrd?v=3&uin=930054439&site=qq&menu=yes" class="qq" target="_blank" title="930054439"><i class="fa fa-qq"></i></a>
+                        <a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=gbiysbG0tbWyuMHw8K-i7uw" class="email" target="_blank" title="930054439@qq.com"><i class="fa fa-envelope"></i></a>
+                        <a href="javascript:void(0)" class="weixin"><i class="fa fa-weixin"></i></a>
+                    </div>
+                    <p class="mt05">
+                        Copyright &copy; 2019-2020 Cen博客 All Rights Reserved V.3.1.3 Power by Cen博客
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="~/Scripts/layui-v2.5.5/layui.js"></script>
+    <script src="~/Scripts/blogs/yss/gloable.js"></script>
+    <script src="~/Scripts/blogs/plugins/nprogress.js"></script>
+    <script src="~/Scripts/blogs/yss/article.js"></script>
+    <script>
+        window.onload = function () {
+            var $ = layui.jquery;
+
+            $("#category>li").click(function () {
+                $(this).attr("class", "addactive").siblings().removeClass("addactive")
+                GetListOrSearch("/Blogs/GetArticleList", 1, $(this).attr("data-index"));
+            })
+            function isEmpty(value) {
+                return (Array.isArray(value) && value.length === 0)
+                    || (Object.prototype.isPrototypeOf(value) && Object.keys(value).length === 0);
+            }
+            $("#SearchBtn").click(function () {
+                if ($("#searchtxt").val() == "") {
+                    layer.msg("请输入值再搜索", { icon: 1 })
+                    return;
+                }
+                GetListOrSearch("/Blogs/GetArticleList", 1, 0, $("#searchtxt").val());
+            })
+            GetListOrSearch("/Blogs/GetArticleList", 1, 0);
+            function GetListOrSearch(url, page, type, title) {
+                $.ajax({
+                    type: "Get",
+                    url: url,
+                    dataType: "json",
+                    data: { limit: 5, page: page, datatype: type, title: title },
+                    success: function (d) {
+                        d.type = type
+                        pagelist(d)
+                        var str = ``
+                            , str2 = ``
+                            , str3
+                        if (d.code == 0) {
+                            if (isEmpty(d.data)) {
+                                $("#hot-article").empty();
+                                $("#LAY_bloglist").html(`<section class="article-item zoomIn article">此类型暂未更新文章<section>`)
+                                $("#hot-article").append(`<li> <a href="#">暂无文章分享</a></li>`)
+                                return
+                            }
+                            for (let index = 0; index < d.data.length; index++) {
+                                let dataArr = d.data[index].article_CreatDateTime.split("-")
+                                index <= 2 ? str3 = "置顶" : str3 = "普通";
+                                str += `
+                                                    <section class="article-item zoomIn article">
+                                                        <div class="fc-flag">${str3}</div>
+                                                        <h5 class="title">
+                                                            <span class="fc-blue">【原创】</span>
+                                                            <a href="#">${d.data[index].article_Title}</a>
+                                                        </h5>
+                                                        <div class="time">
+                                                            <span class="day">${dataArr[0]}</span>
+                                                            <span class="month fs-18">${dataArr[1]}<span class="fs-14">月</span></span>
+                                                            <span class="year fs-18 ml10">${dataArr[2].substring(0, dataArr[2].indexOf(" "))}</span>
+                                                        </div>
+                                                        <div class="content">
+                                                            <a href="/Blogs/read?=${d.data[index].article_Id}"  class="cover img-light">
+                                                                <img   src="/${d.data[index].article_ImgUrl}">
+                                                            </a>
+                                                            ${d.data[index].article_Content}
+                                                        </div>
+                                                        <div class="read-more">
+                                                            <a href="/Blogs/read?=${d.data[index].article_Id}" class="fc-black f-fwb">继续阅读</a>
+                                                        </div>
+                                                        <aside class="f-oh footer">
+                                                            <div class="f-fl tags">
+                                                                <span class="fa fa-tags fs-16"></span>
+                                                                <a class="tag">${d.data[index].type_Name}路线</a>
+                                                            </div>
+                                                            <div class="f-fr">
+                                                                <span class="read">
+                                                                    <i class="fa fa-eye fs-16"></i>
+                                                                    <i class="num">${d.data[index].article_PV}</i>
+                                                                </span>
+                                                                <span class="ml20">
+                                                                    <i class="fa fa-comments fs-16"></i>
+                                                                    <a href="javascript:void(0)" class="num fc-grey">${d.data[index].Count}</a>
+                                                                </span>
+                                                            </div>
+                                                        </aside>
+                                                    </section>
+                                                    `
+                                str2 += `<li> <a href="Read?Articleid=${d.data[index].article_Id}">${d.data[index].article_Title}</a></li>`
+
+                            }
+                            $("#hot-article").html(str2)
+                            $("#LAY_bloglist").html(str)
+                        }
+                        console.log(d);
+                    }
+                })
+            }
+            function pagelist(data) {
+                layui.use('laypage', function () {
+                    var laypage = layui.laypage;
+                    laypage.render({
+                        elem: 'test1'
+                        , count: parseInt(data.count)
+                        , limit: 5
+                        , curr: data.page
+                        , jump: function (obj, first) {
+                            if (!first) {
+                                GetListOrSearch("/Blogs/GetArticleList", obj.curr, data.type);
+                            }
+
+                        }
+                    })
+
+
+
+                })
+            }
+        }
+
+    </script>
+</body>
+</html>

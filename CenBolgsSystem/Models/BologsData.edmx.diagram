@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="208fc5c1729d4a49bc2ee028bb3e5a9c" Name="Diagram1">
+        <EntityTypeShape EntityType="db_CenSystemModel.Admin" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_CenSystemModel.AdminType" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_CenSystemModel.Article" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_CenSystemModel.ArticleReviews" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_CenSystemModel.ArticleType" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_CenSystemModel.BlogsLeave" Width="1.5" PointX="7.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_CenSystemModel.ErrorLog" Width="1.5" PointX="7.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_CenSystemModel.Operatelog" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_CenSystemModel.User" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_CenSystemModel.UserType" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="db_CenSystemModel.FK__Admin__ad_Type__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="db_CenSystemModel.FK__Article__article__15502E78" ManuallyRouted="false" />
+        <AssociationConnector Association="db_CenSystemModel.FK__Operatelo__log_O__164452B1" ManuallyRouted="false" />
+        <AssociationConnector Association="db_CenSystemModel.FK__Article__article__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="db_CenSystemModel.FK__BlogsLeav__leave__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="db_CenSystemModel.FK__BlogsLeav__leave__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="db_CenSystemModel.FK__User__user_Type__619B8048" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,204 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .layui-laypage-curr > .layui-laypage-em {
+        background: #1E9FFF !important;
+    }
+
+    .layui-form-checked span, .layui-form-checked:hover span {
+        background: #1E9FFF !important;
+    }
+</style>
+<br />
+<div class="layui-row">
+    <form class="layui-form layui-col-md12 x-so" id="complain_search">
+        <div class="layui-input-inline">
+            <input type="text" name="serviceCode" id="serviceCode"
+                   placeholder="标题搜索" autocomplete="off" class="layui-input">
+        </div>
+        <button id="search" class="layui-btn layui-btn-normal" lay-submit
+                lay-filter="provinceSearch">
+            <i class="layui-icon">&#xe615;</i>
+        </button>
+    </form>
+</div>
+<table class="layui-hide" id="test" lay-filter="test"></table>
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+
+        <button class="layui-btn  layui-btn-sm layui-btn-normal" lay-event="getCheckData">获取选中行数据</button>
+        <button class="layui-btn layui-btn-sm layui-btn-normal" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm layui-btn-normal" lay-event="isAll">验证是否全选</button>
+    </div>
+</script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="showimg"><i class="layui-icon">&#xe64a;</i>查看图片</a>
+    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="edit"><i class="layui-icon">&#xe641;</i>编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon">&#xe640;</i>删除</a>
+</script>
+<script type="text/html" id="checkboxTpl">
+    <!-- 这里的 checked 的状态只是演示 -->
+    <input type="checkbox" name="article_Status" data-articlesId="{{d.article_Id}}" value="{{d.article_Status}}" title="锁定" lay-filter="lockDemo" {{ d.article_Status == true ? 'checked' : '' }}>
+</script>
+<script>
+
+
+    window.onload = function () {
+        function isEmpty(value) {
+            return (Array.isArray(value) && value.length === 0)
+                || (Object.prototype.isPrototypeOf(value) && Object.keys(value).length === 0);
+        }
+        layui.use('table', function () {
+            var table = layui.table,
+                form = layui.form,
+                $ = layui.$,
+                laypage = layui.laypage
+            // 搜索
+            laypage.render({
+                elem: 'test'
+                , theme: '#1E9FFF'
+            });
+            function PostInsertVal(obj, url) {
+                $.ajax({
+                    type: "post",
+                    data: obj,
+                    url: url,
+                    success: function (data) {
+                        if (data.code == 0) {
+
+                            layer.msg("成功", { icon: 1 })
+                            table.reload('test', {})
+                            return
+                        }
+                        layer.msg("失败", { icon: 2 })
+                    }, error: function (error) {
+                        layer.msg("网络链接中断", { icon: 2 })
+                    }
+                })
+            }
+            form.on('checkbox(lockDemo)', function (obj) {
+                //layer.tips(this.value + ' ' + this.name);
+                console.log(this.value)
+                PostInsertVal({ article_Id: obj.elem.getAttribute("data-articlesId"), article_Status: obj.elem.checked }, "/Home/UpDataArticleStatus")
+            });
+            form.on('submit(provinceSearch)', function (data) {
+                var formData = data.field;
+                console.log(formData.serviceCode);
+                title = formData.serviceCode,
+                    table.reload('test', {
+                        where: {
+                            title,
+                        },
+                        page: {
+                            curr: 1
+                        },
+                        theme: '#1E9FFF',
+                        method: 'post',
+                        contentType: "application/json;charset=utf-8",
+                        url: '/Home/SelectArticle',
+                    });
+                return false;
+            });
+            // 表格加载
+            table.render({
+                elem: '#test'
+                , url: '/Home/SelectArticle'
+                , toolbar: '#toolbarDemo'
+                , title: '用户数据表'
+                , totalRow: true
+                , theme: '#1E9FFF'
+
+                , cols: [[
+                    { type: 'checkbox', fixed: 'left' }
+                    , { field: 'article_Id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计' }
+                    , { field: 'article_Title', title: '文章标题', width: 120, }
+                    , { field: 'article_Content', title: '文章介绍' }
+                    , { field: 'type_Name', title: '文章类型', width: 120, }
+                    , { field: 'ad_UserName', title: '发布人', width: 140 }
+                    , { field: 'article_CreatDateTime', title: '创建时间', width: 200 }
+                    , { field: 'article_Status', title: '是否锁定', width: 110, templet: '#checkboxTpl', unresize: true }
+                    , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 300 }
+                ]]
+                , page: true
+            });
+            // 操作栏 监听操作
+            table.on('tool(test)', function (obj) {
+                var data = obj.data;
+                switch (obj.event) {
+                    case 'edit':
+                        window.location.href = "/Home/UpDateArticle?id=" + data.article_Id
+                        break;
+                    case 'del':
+                        console.log(data)
+                        layer.confirm('你确定要删除数据吗', function (index) {
+                            $.ajax({
+                                url: "/Home/DeleteArticle",
+                                type: "post",
+                                data: {
+                                    article_Id: data.article_Id,
+                                    article_Status: data.article_Status
+                                },
+                                dataType: "JSON",
+                                success: function (res) {
+
+                                    if (res.code == 0) {
+                                        layer.msg(res.msg, { icon: 1 })
+
+                                        obj.del()
+                                        return;
+                                    }
+                                    layer.msg(res.msg, { icon: 2 })
+                                }, error: function (error) {
+                                    layui.msg("请检查网络", { icon: 2 })
+                                }
+                            })
+
+                        });
+                        break;
+                    case "showimg":
+                        layer.open({
+                            type: 1,
+                            title: false,
+                            shade: 0.8,
+                            skin: 'layui-layer-nobg',
+                            area: ['auto'],
+                            content: `<img src='/${data.article_ImgUrl}' alt="文件路径有误请联系管理员火速替换" style="width:500px;height:500px" />`
+                        });
+                        break;
+                }
+            });
+            //工具栏 监听
+            table.on('toolbar(test)', function (obj) {
+                var checkStatus = table.checkStatus(obj.config.id);
+                switch (obj.event) {
+                    case 'getCheckData':
+                        var data = checkStatus.data;
+                        $.ajax({
+                            type: "post",
+                            data: {data:data},
+                            url:"/Home/DeleteAllArticle",
+                            success: function (result) {
+                                if (result.code == 0) {
+                                    layer.msg(result.msg, { icon: 1 })
+                                    return;
+                                }
+                                layer.msg(result.msg, { icon: 2 })
+                                return;
+                            }
+                        })
+                        break;
+                    case 'getCheckLength':
+                        var data = checkStatus.data;
+                        layer.msg('选中了：' + data.length + ' 个');
+                        break;
+                    case 'isAll':
+                        layer.msg(checkStatus.isAll ? '全选' : '未全选')
+                        break;
+                };
+            });
+        });
+    }
+</script>

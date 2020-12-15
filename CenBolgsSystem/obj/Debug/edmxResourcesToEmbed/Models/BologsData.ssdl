@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_CenSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="ad_Id" />
+    </Key>
+    <Property Name="ad_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad_UserName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="ad_PassWord" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="ad_Type" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AdminType">
+    <Key>
+      <PropertyRef Name="Ad_TypeId" />
+    </Key>
+    <Property Name="Ad_TypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ad_TypeName" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="article_Id" />
+    </Key>
+    <Property Name="article_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="article_Title" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="article_Content" Type="text" Nullable="false" />
+    <Property Name="article_Type" Type="int" Nullable="false" />
+    <Property Name="article_ImgUrl" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="article_CreatAdminId" Type="int" />
+    <Property Name="article_MakCode" Type="text" Nullable="false" />
+    <Property Name="article_CreatDateTime" Type="varchar" MaxLength="255" />
+    <Property Name="article_Status" Type="bit" />
+    <Property Name="article_MakHtml" Type="text" />
+    <Property Name="article_PV" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArticleReviews">
+    <Key>
+      <PropertyRef Name="reviews_id" />
+    </Key>
+    <Property Name="reviews_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="reviews_NameId" Type="int" Nullable="false" />
+    <Property Name="reviews_Content" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArticleType">
+    <Key>
+      <PropertyRef Name="article_Id" />
+    </Key>
+    <Property Name="article_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type_Name" Type="varchar" MaxLength="55" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BlogsLeave">
+    <Key>
+      <PropertyRef Name="leave_Id" />
+    </Key>
+    <Property Name="leave_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="leave_content" Type="text" Nullable="false" />
+    <Property Name="leave_creatdatetime" Type="datetime" Nullable="false" />
+    <Property Name="leave_articleId" Type="int" Nullable="false" />
+    <Property Name="leave_userId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ErrorLog">
+    <Key>
+      <PropertyRef Name="error_id" />
+    </Key>
+    <Property Name="error_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="error_content" Type="text" Nullable="false" />
+    <Property Name="error_createdatetime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Operatelog">
+    <Key>
+      <PropertyRef Name="log_Id" />
+    </Key>
+    <Property Name="log_Id" Type="int" Nullable="false" />
+    <Property Name="log_Content" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="log_CreatDataTime" Type="datetime" Nullable="false" />
+    <Property Name="log_OperatelogAdmin" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="user_Id" />
+    </Key>
+    <Property Name="user_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="user_PassWord" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="user_ImgUrl" Type="varchar" MaxLength="255" />
+    <Property Name="user_Type" Type="int" Nullable="false" />
+    <Property Name="user_CreatDateTime" Type="datetime" Nullable="false" />
+    <Property Name="user_Status" Type="bit" Nullable="false" />
+    <Property Name="user_Email" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="userType_Id" />
+    </Key>
+    <Property Name="userType_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userType_Name" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Admin__ad_Type__37A5467C">
+    <End Role="AdminType" Type="Self.AdminType" Multiplicity="1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdminType">
+        <PropertyRef Name="Ad_TypeId" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="ad_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Article__article__15502E78">
+    <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+    <End Role="Article" Type="Self.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="ad_Id" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="article_CreatAdminId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Article__article__239E4DCF">
+    <End Role="ArticleType" Type="Self.ArticleType" Multiplicity="1" />
+    <End Role="Article" Type="Self.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArticleType">
+        <PropertyRef Name="article_Id" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="article_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BlogsLeav__leave__5DCAEF64">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="BlogsLeave" Type="Self.BlogsLeave" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="user_Id" />
+      </Principal>
+      <Dependent Role="BlogsLeave">
+        <PropertyRef Name="leave_userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BlogsLeav__leave__628FA481">
+    <End Role="Article" Type="Self.Article" Multiplicity="1" />
+    <End Role="BlogsLeave" Type="Self.BlogsLeave" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Article">
+        <PropertyRef Name="article_Id" />
+      </Principal>
+      <Dependent Role="BlogsLeave">
+        <PropertyRef Name="leave_articleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Operatelo__log_O__164452B1">
+    <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+    <End Role="Operatelog" Type="Self.Operatelog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="ad_Id" />
+      </Principal>
+      <Dependent Role="Operatelog">
+        <PropertyRef Name="log_OperatelogAdmin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User__user_Type__619B8048">
+    <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="userType_Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="user_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="db_CenSystemModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdminType" EntityType="Self.AdminType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ArticleReviews" EntityType="Self.ArticleReviews" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ArticleType" EntityType="Self.ArticleType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BlogsLeave" EntityType="Self.BlogsLeave" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Operatelog" EntityType="Self.Operatelog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Admin__ad_Type__37A5467C" Association="Self.FK__Admin__ad_Type__37A5467C">
+      <End Role="AdminType" EntitySet="AdminType" />
+      <End Role="Admin" EntitySet="Admin" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Article__article__15502E78" Association="Self.FK__Article__article__15502E78">
+      <End Role="Admin" EntitySet="Admin" />
+      <End Role="Article" EntitySet="Article" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Article__article__239E4DCF" Association="Self.FK__Article__article__239E4DCF">
+      <End Role="ArticleType" EntitySet="ArticleType" />
+      <End Role="Article" EntitySet="Article" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BlogsLeav__leave__5DCAEF64" Association="Self.FK__BlogsLeav__leave__5DCAEF64">
+      <End Role="User" EntitySet="User" />
+      <End Role="BlogsLeave" EntitySet="BlogsLeave" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BlogsLeav__leave__628FA481" Association="Self.FK__BlogsLeav__leave__628FA481">
+      <End Role="Article" EntitySet="Article" />
+      <End Role="BlogsLeave" EntitySet="BlogsLeave" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Operatelo__log_O__164452B1" Association="Self.FK__Operatelo__log_O__164452B1">
+      <End Role="Admin" EntitySet="Admin" />
+      <End Role="Operatelog" EntitySet="Operatelog" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User__user_Type__619B8048" Association="Self.FK__User__user_Type__619B8048">
+      <End Role="UserType" EntitySet="UserType" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

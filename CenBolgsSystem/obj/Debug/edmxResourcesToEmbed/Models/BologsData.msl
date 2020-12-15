@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="db_CenSystemModelStoreContainer" CdmEntityContainer="db_CenSystemEntities">
+    <EntitySetMapping Name="Admin">
+      <EntityTypeMapping TypeName="db_CenSystemModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="ad_Id" ColumnName="ad_Id" />
+          <ScalarProperty Name="ad_UserName" ColumnName="ad_UserName" />
+          <ScalarProperty Name="ad_PassWord" ColumnName="ad_PassWord" />
+          <ScalarProperty Name="ad_Type" ColumnName="ad_Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdminType">
+      <EntityTypeMapping TypeName="db_CenSystemModel.AdminType">
+        <MappingFragment StoreEntitySet="AdminType">
+          <ScalarProperty Name="Ad_TypeId" ColumnName="Ad_TypeId" />
+          <ScalarProperty Name="Ad_TypeName" ColumnName="Ad_TypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Article">
+      <EntityTypeMapping TypeName="db_CenSystemModel.Article">
+        <MappingFragment StoreEntitySet="Article">
+          <ScalarProperty Name="article_Id" ColumnName="article_Id" />
+          <ScalarProperty Name="article_Title" ColumnName="article_Title" />
+          <ScalarProperty Name="article_Content" ColumnName="article_Content" />
+          <ScalarProperty Name="article_Type" ColumnName="article_Type" />
+          <ScalarProperty Name="article_ImgUrl" ColumnName="article_ImgUrl" />
+          <ScalarProperty Name="article_CreatAdminId" ColumnName="article_CreatAdminId" />
+          <ScalarProperty Name="article_MakCode" ColumnName="article_MakCode" />
+          <ScalarProperty Name="article_CreatDateTime" ColumnName="article_CreatDateTime" />
+          <ScalarProperty Name="article_Status" ColumnName="article_Status" />
+          <ScalarProperty Name="article_MakHtml" ColumnName="article_MakHtml" />
+          <ScalarProperty Name="article_PV" ColumnName="article_PV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArticleReviews">
+      <EntityTypeMapping TypeName="db_CenSystemModel.ArticleReviews">
+        <MappingFragment StoreEntitySet="ArticleReviews">
+          <ScalarProperty Name="reviews_id" ColumnName="reviews_id" />
+          <ScalarProperty Name="reviews_NameId" ColumnName="reviews_NameId" />
+          <ScalarProperty Name="reviews_Content" ColumnName="reviews_Content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArticleType">
+      <EntityTypeMapping TypeName="db_CenSystemModel.ArticleType">
+        <MappingFragment StoreEntitySet="ArticleType">
+          <ScalarProperty Name="article_Id" ColumnName="article_Id" />
+          <ScalarProperty Name="type_Name" ColumnName="type_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BlogsLeave">
+      <EntityTypeMapping TypeName="db_CenSystemModel.BlogsLeave">
+        <MappingFragment StoreEntitySet="BlogsLeave">
+          <ScalarProperty Name="leave_Id" ColumnName="leave_Id" />
+          <ScalarProperty Name="leave_content" ColumnName="leave_content" />
+          <ScalarProperty Name="leave_creatdatetime" ColumnName="leave_creatdatetime" />
+          <ScalarProperty Name="leave_articleId" ColumnName="leave_articleId" />
+          <ScalarProperty Name="leave_userId" ColumnName="leave_userId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ErrorLog">
+      <EntityTypeMapping TypeName="db_CenSystemModel.ErrorLog">
+        <MappingFragment StoreEntitySet="ErrorLog">
+          <ScalarProperty Name="error_id" ColumnName="error_id" />
+          <ScalarProperty Name="error_content" ColumnName="error_content" />
+          <ScalarProperty Name="error_createdatetime" ColumnName="error_createdatetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Operatelog">
+      <EntityTypeMapping TypeName="db_CenSystemModel.Operatelog">
+        <MappingFragment StoreEntitySet="Operatelog">
+          <ScalarProperty Name="log_Id" ColumnName="log_Id" />
+          <ScalarProperty Name="log_Content" ColumnName="log_Content" />
+          <ScalarProperty Name="log_CreatDataTime" ColumnName="log_CreatDataTime" />
+          <ScalarProperty Name="log_OperatelogAdmin" ColumnName="log_OperatelogAdmin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="db_CenSystemModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="user_Id" ColumnName="user_Id" />
+          <ScalarProperty Name="user_Name" ColumnName="user_Name" />
+          <ScalarProperty Name="user_PassWord" ColumnName="user_PassWord" />
+          <ScalarProperty Name="user_ImgUrl" ColumnName="user_ImgUrl" />
+          <ScalarProperty Name="user_Type" ColumnName="user_Type" />
+          <ScalarProperty Name="user_CreatDateTime" ColumnName="user_CreatDateTime" />
+          <ScalarProperty Name="user_Status" ColumnName="user_Status" />
+          <ScalarProperty Name="user_Email" ColumnName="user_Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserType">
+      <EntityTypeMapping TypeName="db_CenSystemModel.UserType">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="userType_Id" ColumnName="userType_Id" />
+          <ScalarProperty Name="userType_Name" ColumnName="userType_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link href="~/Content/Bootstrapv4.0.0/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/user/utli.css" rel="stylesheet" />
+    <link href="~/Content/user/main.css" rel="stylesheet" />
+    <link href="~/Fonts/iconic/css/material-design-iconic-font.min.css" rel="stylesheet" />
+    <link href="~/Fonts/layui-v2.5.5/css/layui.css" rel="stylesheet" />
+    <style>
+        .laybtnbg {
+            background: #a64bf4;
+            background: -webkit-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('/images/bg-01.jpg');">
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery/jquery.3.1.min.js"></script>
+    <script src="~/Scripts/layui-v2.5.5/layui.js"></script>
+    <script src="~/Scripts/RegLoginMain.js"></script>
+
+</body>
+</html>
