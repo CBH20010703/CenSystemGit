@@ -88,16 +88,18 @@ namespace CenBolgsSystem.Models
                 try
                 {
                     var list = db.Article.FirstOrDefault(c => c.article_Id == data.article_Id);
+                    //判断是否把之前的图片删除完毕
                     if (DeleteFile(HttpContext.Current.Server.MapPath("../") + list.article_ImgUrl))
                     {
-                        List<BlogsLeave> listtow = db.BlogsLeave.Where(c => c.leave_articleId == data.article_Id).ToList();
-                        foreach (var item in listtow)
+                        //判断是否把文章对应留言删除完毕
+                        if (RemoveArticleLeave(list))
                         {
-                            db.BlogsLeave.Remove(item);
-                            db.SaveChanges();
-                        };
-                        db.Article.Remove(list);
-                        return NumberconvertBool(db.SaveChanges());
+                            // 执行删除文章
+                            db.Article.Remove(list);
+                            return NumberconvertBool(db.SaveChanges());
+                        }
+                        //返回状态
+                        return false;
                     }
                     return false;
                 }
@@ -181,8 +183,12 @@ namespace CenBolgsSystem.Models
                    
                     foreach (Article item in data)
                     {
-                        db.Article.Remove((Article)db.Article.FirstOrDefault(c => item.article_Id == c.article_Id));
-                     
+                       Article list=db.Article.FirstOrDefault(c => item.article_Id == c.article_Id);
+                        //删除文章前需要删除 对应文章的评论
+                        if (RemoveArticleLeave(list))
+                        {
+                            db.Article.Remove(list);
+                        }                      
                     }
                     return db.SaveChanges() <= 0 ? false : true;
               
@@ -192,6 +198,30 @@ namespace CenBolgsSystem.Models
                     return false;
                     throw;
                 }
+            }
+        }
+
+        private bool RemoveArticleLeave(Article art) {
+            try
+            {
+                using (db_CenSystemEntities db = new db_CenSystemEntities())
+                {
+                    List<BlogsLeave> list = db.BlogsLeave.Where(c => c.leave_articleId == art.article_Id).ToList();
+                    if (list == null)
+                    {
+                        return true;
+                    }
+                    foreach (var item in list)
+                    {
+                        db.BlogsLeave.Remove(item);
+                    }
+                    return db.SaveChanges() <= 0 ? false : true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
             }
         }
         private bool NumberconvertBool(int num)
