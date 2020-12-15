@@ -18,7 +18,10 @@ namespace CenBolgsSystem.Models
         public string log_Content { get; set; }
         public System.DateTime log_CreatDataTime { get; set; }
         public int log_OperatelogAdmin { get; set; }
+        public string log_OperAction { get; set; }
+        public int log_OperStatus { get; set; }
     
         public virtual Admin Admin { get; set; }
+        public virtual OpeStatusType OpeStatusType { get; set; }
     }
 }

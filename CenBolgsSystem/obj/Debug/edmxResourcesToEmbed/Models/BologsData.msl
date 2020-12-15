@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="db_CenSystemModelStoreContainer" CdmEntityContainer="db_CenSystemEntities">
+  <EntityContainerMapping StorageEntityContainer="db_CenSystemModelStoreContainer" CdmEntityContainer="db_CenSystemEntities2">
     <EntitySetMapping Name="Admin">
       <EntityTypeMapping TypeName="db_CenSystemModel.Admin">
         <MappingFragment StoreEntitySet="Admin">
@@ -33,15 +33,6 @@
           <ScalarProperty Name="article_Status" ColumnName="article_Status" />
           <ScalarProperty Name="article_MakHtml" ColumnName="article_MakHtml" />
           <ScalarProperty Name="article_PV" ColumnName="article_PV" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ArticleReviews">
-      <EntityTypeMapping TypeName="db_CenSystemModel.ArticleReviews">
-        <MappingFragment StoreEntitySet="ArticleReviews">
-          <ScalarProperty Name="reviews_id" ColumnName="reviews_id" />
-          <ScalarProperty Name="reviews_NameId" ColumnName="reviews_NameId" />
-          <ScalarProperty Name="reviews_Content" ColumnName="reviews_Content" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -80,6 +71,16 @@
           <ScalarProperty Name="log_Content" ColumnName="log_Content" />
           <ScalarProperty Name="log_CreatDataTime" ColumnName="log_CreatDataTime" />
           <ScalarProperty Name="log_OperatelogAdmin" ColumnName="log_OperatelogAdmin" />
+          <ScalarProperty Name="log_OperAction" ColumnName="log_OperAction" />
+          <ScalarProperty Name="log_OperStatus" ColumnName="log_OperStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OpeStatusType">
+      <EntityTypeMapping TypeName="db_CenSystemModel.OpeStatusType">
+        <MappingFragment StoreEntitySet="OpeStatusType">
+          <ScalarProperty Name="OpeType_Id" ColumnName="OpeType_Id" />
+          <ScalarProperty Name="OpeType_Name" ColumnName="OpeType_Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

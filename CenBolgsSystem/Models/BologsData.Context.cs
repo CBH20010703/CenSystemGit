@@ -28,11 +28,11 @@ namespace CenBolgsSystem.Models
         public virtual DbSet<Admin> Admin { get; set; }
         public virtual DbSet<AdminType> AdminType { get; set; }
         public virtual DbSet<Article> Article { get; set; }
-        public virtual DbSet<ArticleReviews> ArticleReviews { get; set; }
         public virtual DbSet<ArticleType> ArticleType { get; set; }
         public virtual DbSet<BlogsLeave> BlogsLeave { get; set; }
         public virtual DbSet<ErrorLog> ErrorLog { get; set; }
         public virtual DbSet<Operatelog> Operatelog { get; set; }
+        public virtual DbSet<OpeStatusType> OpeStatusType { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<UserType> UserType { get; set; }
     }

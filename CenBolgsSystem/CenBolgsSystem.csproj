@@ -728,8 +728,8 @@
     <Content Include="images\web.jpg" />
     <Content Include="Models\BologsData.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BologsData.Context.cs</LastGenOutput>
       <DependentUpon>BologsData.edmx</DependentUpon>
+      <LastGenOutput>BologsData.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\BologsData.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -894,6 +894,7 @@
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\Filters\ErrorFilterAttribute.cs" />
+    <Compile Include="App_Start\Filters\LogFilterAttribute.cs" />
     <Compile Include="App_Start\Filters\LogoinFilterAttribute.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -912,9 +913,6 @@
       <DependentUpon>BologsData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Article.cs">
-      <DependentUpon>BologsData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArticleReviews.cs">
       <DependentUpon>BologsData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ArticleType.cs">
@@ -949,6 +947,9 @@
     <Compile Include="Models\Operatelog.cs">
       <DependentUpon>BologsData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OpeStatusType.cs">
+      <DependentUpon>BologsData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\User.cs">
       <DependentUpon>BologsData.tt</DependentUpon>
     </Compile>
@@ -959,13 +960,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <EntityDeploy Include="Models\BologsData.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BologsData.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\BologsData.edmx.diagram">
-      <DependentUpon>BologsData.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\editormd\.jshintrc" />
     <Content Include="Content\editormd\.npmignore" />
     <Content Include="Content\editormd\bower.json" />
@@ -1069,6 +1063,13 @@
     <Content Include="Fonts\lg.woff" />
     <Content Include="api\init.json" />
     <Content Include="api\menus.json" />
+    <EntityDeploy Include="Models\BologsData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BologsData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\BologsData.edmx.diagram">
+      <DependentUpon>BologsData.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Scripts\lay-module\wangEditor\fonts\w-e-icon.woff" />
     <Content Include="Scripts\lay-module\wangEditor\wangEditor.min.js.map" />

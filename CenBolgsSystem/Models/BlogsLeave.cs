@@ -17,8 +17,8 @@ namespace CenBolgsSystem.Models
         public int leave_Id { get; set; }
         public string leave_content { get; set; }
         public System.DateTime leave_creatdatetime { get; set; }
-        public int leave_articleId { get; set; }
-        public int leave_userId { get; set; }
+        public Nullable<int> leave_articleId { get; set; }
+        public Nullable<int> leave_userId { get; set; }
     
         public virtual Article Article { get; set; }
         public virtual User User { get; set; }

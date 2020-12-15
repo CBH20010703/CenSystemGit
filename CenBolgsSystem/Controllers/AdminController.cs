@@ -1,5 +1,6 @@
 ﻿using CenBolgsSystem.App_Start;
 using CenBolgsSystem.Models;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
 namespace CenBolgsSystem.Controllers
@@ -7,12 +8,18 @@ namespace CenBolgsSystem.Controllers
     [LogoinFilter]
     public class AdminController : Controller
     {
+       
+        public AdminController()
+        {
+
+        }
         BlogsAdmin Ad = new BlogsAdmin();
         // GET: Admin
         public ActionResult SetAdminPwd()
         {
             return View();
         }
+       
         [HttpPost]
         public ActionResult SetAdminPwd(string new_password, string old_password)
         {
