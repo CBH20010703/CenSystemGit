@@ -56,6 +56,23 @@ namespace CenBolgsSystem.Models
             }
         }
 
+        public bool UpDataStatus(User Userstatus)
+        {
+            try
+            {
+                using (db_CenSystemEntities db = new db_CenSystemEntities())
+                {
+                    db.User.First(c => c.user_Id == Userstatus.user_Id).user_Status = Userstatus.user_Status;
+                    return db.SaveChanges() <= 0 ? false : true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+        }
+
         public int SelectCount()
         {
             return num;

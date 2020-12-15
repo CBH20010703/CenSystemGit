@@ -71,5 +71,13 @@ namespace CenBolgsSystem.Controllers
             return Json(new { code = 0, data = list.SelectData(page, limit, title, type), count = list.SelectCount() }, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult UserUpdataStatus(User userStatus)
+        {
+            if (list.UpDataStatus(userStatus))
+            {
+                return Json(new { code = 0, msg = "状态更新成功" }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { code = 1, msg = "状态更新失败" }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

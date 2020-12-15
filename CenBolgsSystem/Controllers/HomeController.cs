@@ -71,9 +71,9 @@ namespace CenBolgsSystem.Controllers
         }
         public JsonResult DeleteArticle(Article d)
         {
-            if (d.article_Status == true)
+            if (d.article_Status != true)
             {
-                return Json(new { code = 1, msg = "删除失败 锁定状态无法删除" }, JsonRequestBehavior.AllowGet);
+                return Json(new { code = 1, msg = "删除失败 未锁定状态无法删除" }, JsonRequestBehavior.AllowGet);
             }
             if (list.RemoveData(d))
             {
@@ -84,6 +84,13 @@ namespace CenBolgsSystem.Controllers
 
         public JsonResult DeleteAllArticle(List<Article> data)
         {
+            foreach (var item in data)
+            {
+                if (item.article_Status != true)
+                {
+                    return Json(new { code = 1, msg = "Error 提交信息中存在状态为未锁定的文章无法删除!" }, JsonRequestBehavior.AllowGet);
+                }
+            }
             if (list.RemoveAllData(data))
             {
                 return Json(new { code = 0, msg = "删除成功" }, JsonRequestBehavior.AllowGet);

@@ -40,7 +40,7 @@
 </script>
 <script type="text/html" id="checkboxTpl">
     <!-- 这里的 checked 的状态只是演示 -->
-    <input type="checkbox" name="article_Status" data-articlesId="{{d.user_Status}}" value="{{d.user_Status}}" title="锁定" lay-filter="lockDemo" {{ d.user_Status == true ? 'checked' : '' }}>
+    <input type="checkbox" name="article_Status" data-articlesId="{{d.user_Id}}" value="{{d.user_Status}}" title="锁定" lay-filter="lockDemo" {{ d.user_Status == true ? 'checked' : '' }}>
 </script>
 <script>
 
@@ -81,7 +81,7 @@
             form.on('checkbox(lockDemo)', function (obj) {
                 //layer.tips(this.value + ' ' + this.name);
                 console.log(this.value)
-                PostInsertVal({ article_Id: obj.elem.getAttribute("data-articlesId"), article_Status: obj.elem.checked }, "/Home/UpDataArticleStatus")
+                PostInsertVal({ user_Id: obj.elem.getAttribute("data-articlesId"), user_Status: obj.elem.checked }, "/User/UserUpdataStatus")
             });
             form.on('submit(provinceSearch)', function (data) {
                 var formData = data.field;
