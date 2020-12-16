@@ -13,6 +13,8 @@ namespace CenBolgsSystem.Controllers
         {
 
         }
+
+
         BlogsAdmin Ad = new BlogsAdmin();
         // GET: Admin
         public ActionResult SetAdminPwd()
@@ -29,6 +31,12 @@ namespace CenBolgsSystem.Controllers
             }
            return Json(new { code = 1, msg = "修改失败" }, JsonRequestBehavior.AllowGet);
 
+        }
+
+
+        public ActionResult GetLog()
+        {
+            return Json(new { code = 0, data = new BlogsAdmin().SelectAdminLog() }, JsonRequestBehavior.AllowGet);
         }
     }
 }

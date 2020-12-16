@@ -34,7 +34,19 @@ namespace CenBolgsSystem.Models
         {
             throw new NotImplementedException();
         }
-
+        public IQueryable SelectAdminLog()
+        {
+            db_CenSystemEntities db = new db_CenSystemEntities();
+            // 查询十条
+           return db.Operatelog.OrderByDescending(c => c.log_CreatDataTime).Skip(0).Take(10).Select(c=>new {
+            c.log_Id,
+            c.log_CreatDataTime,
+            c.Admin.ad_UserName,
+            c.OpeStatusType.OpeType_Name,
+            c.log_Content,
+            c.log_OperAction,
+           });
+        }
         public bool SetPassWord(string new_password, string old_password)
         {
             using (db_CenSystemEntities db = new db_CenSystemEntities())

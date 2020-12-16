@@ -27,12 +27,18 @@ namespace CenBolgsSystem.Controllers
             return View();
         }
 
+        public ActionResult Operate()
+        {
+            return View();
+        }
+
         public ActionResult Welcome()
         {
             return View();
         }
 
         [ValidateInput(false)]
+        [LogFilter("添加文章", 1)]
         public JsonResult InsertArticle(Article data, HttpPostedFileBase file)
         {
             if (list.InsertData(data, file))
@@ -42,6 +48,7 @@ namespace CenBolgsSystem.Controllers
             return Json(new { code = 1, msg = "上传失败" }, JsonRequestBehavior.AllowGet);
         }
         [ValidateInput(false)]
+        [LogFilter("编辑文章", 2)]
         public JsonResult Exit(Article data, HttpPostedFileBase file)
         {
             if (list.ExitArticle(data, file) <= 0)
@@ -54,7 +61,7 @@ namespace CenBolgsSystem.Controllers
         {
             return Json(new { code = 0, data = list.ConditionQuery(d) }, JsonRequestBehavior.AllowGet);
         }
-
+        [LogFilter("设置文章状态", 1)]
         public JsonResult UpDataArticleStatus(Article d)
         {
             if (!list.UpDataArticleField(d))
@@ -69,6 +76,7 @@ namespace CenBolgsSystem.Controllers
            
             return Json(new { data = list.BlogsStatusCount() }, JsonRequestBehavior.AllowGet);
         }
+        [LogFilter("单选删除文章", 1)]
         public JsonResult DeleteArticle(Article d)
         {
             if (d.article_Status != true)
@@ -81,7 +89,7 @@ namespace CenBolgsSystem.Controllers
             }
             return Json(new { code = 1, msg = "删除失败" }, JsonRequestBehavior.AllowGet);
         }
-
+        [LogFilter("多选删除文章", 2)]
         public JsonResult DeleteAllArticle(List<Article> data)
         {
             foreach (var item in data)

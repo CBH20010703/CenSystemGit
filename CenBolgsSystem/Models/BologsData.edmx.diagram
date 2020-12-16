@@ -12,7 +12,7 @@
         <EntityTypeShape EntityType="db_CenSystemModel.BlogsLeave" Width="1.5" PointX="10.5" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="db_CenSystemModel.ErrorLog" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="db_CenSystemModel.Operatelog" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_CenSystemModel.OpeStatusType" Width="1.5" PointX="6" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_CenSystemModel.OpeStatusType" Width="1.5" PointX="8.25" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="db_CenSystemModel.User" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="db_CenSystemModel.UserType" Width="1.5" PointX="6" PointY="1.5" IsExpanded="true" />
         <AssociationConnector Association="db_CenSystemModel.FK__Admin__ad_Type__37A5467C" ManuallyRouted="false" />

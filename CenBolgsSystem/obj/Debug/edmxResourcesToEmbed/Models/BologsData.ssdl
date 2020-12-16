@@ -61,7 +61,7 @@
     <Key>
       <PropertyRef Name="log_Id" />
     </Key>
-    <Property Name="log_Id" Type="int" Nullable="false" />
+    <Property Name="log_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="log_Content" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="log_CreatDataTime" Type="datetime" Nullable="false" />
     <Property Name="log_OperatelogAdmin" Type="int" Nullable="false" />

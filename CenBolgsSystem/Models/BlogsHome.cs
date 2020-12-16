@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
-
+using CenBolgsSystem.App_Start.Filters;
 namespace CenBolgsSystem.Models
 {
     public class BlogsHome : IBlogsOperation<Article>
@@ -173,7 +173,7 @@ namespace CenBolgsSystem.Models
             throw new NotImplementedException();
         }
 
-
+       
         public bool RemoveAllData(List<Article> data)
         {
             using (db_CenSystemEntities db = new db_CenSystemEntities())
@@ -190,7 +190,7 @@ namespace CenBolgsSystem.Models
                             db.Article.Remove(list);
                         }                      
                     }
-                    return db.SaveChanges() <= 0;
+                    return db.SaveChanges()>=0;
               
                 }
                 catch (Exception)
@@ -207,13 +207,12 @@ namespace CenBolgsSystem.Models
                 using (db_CenSystemEntities db = new db_CenSystemEntities())
                 {
                     List<BlogsLeave> list = db.BlogsLeave.Where(c => c.leave_articleId == art.article_Id).ToList();
-                    if (list == null) return true;
-                   
+                    if (list.Count == 0) return true;
                     foreach (var item in list)
                     {
                         db.BlogsLeave.Remove(item);
                     }
-                    return db.SaveChanges() <= 0 ;
+                    return db.SaveChanges() >= 0 ;
                 }
             }
             catch (Exception)

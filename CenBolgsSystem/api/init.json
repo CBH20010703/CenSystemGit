@@ -101,7 +101,7 @@
           "child": [
             {
               "title": "更新日志",
-              "href": "/Error/Log",
+              "href": "/Home/Operate",
               "icon": "layui-icon layui-icon-code-circle",
               "target": "_self"
             }

@@ -1,17 +1,16 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CenBolgsSystem.Models;
+
 namespace CenBolgsSystem.App_Start.Filters
 {
     public class LogFilterAttribute: ActionFilterAttribute,IActionFilter
     {
-        /// <summary>
-        /// 操作员Id
-        /// </summary>
-       
+        
         public LogFilterAttribute(string operate,int operateStatus)
         {  // 操作名称
             this.log_Content = operate;
@@ -20,11 +19,11 @@ namespace CenBolgsSystem.App_Start.Filters
             this.log_CreatDataTime = DateTime.Now;
         }
         public override void OnActionExecuted(ActionExecutedContext filterContext)
-        {  //获取 控制器名 与 动作名 
-
-            log_OperAction = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName+filterContext.ActionDescriptor.ActionName;
+        {  
+            //获取 控制器名 与 动作名 
+            log_OperAction = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName+"/"+filterContext.ActionDescriptor.ActionName;
             log_OperatelogAdmin = (int)filterContext.HttpContext.Session["AdminId"];
-            //获取Controller 名称
+            var Request = filterContext.RequestContext.HttpContext;//获取控制器传入的参数
             db_CenSystemEntities db = new db_CenSystemEntities();
             db.Operatelog.Add(new Operatelog
             {
@@ -35,11 +34,7 @@ namespace CenBolgsSystem.App_Start.Filters
                  log_OperStatus=this.log_OperStatus
             });
             db.SaveChanges();
-          //  var Request = filterContext.RequestContext.HttpContext.Request.Form;//获取控制器传入的参数
-           /// var  str1= filterContext.Result;
-            
-            //var Time = filterContext.HttpContext.Timestamp;
-            //var Code = filterContext.RequestContext;
+           
 
             //执行完action后跳转后执行
         }
@@ -58,5 +53,7 @@ namespace CenBolgsSystem.App_Start.Filters
          
         //操作控制器和动作 地址  
         public string log_OperAction { get; set; }
+
+      
     }
 }

@@ -886,9 +886,6 @@
     <Content Include="Scripts\zylVerificationCode.js" />
     <Content Include="Upload\2020120901283941HLGZUAN4.png" />
     <Content Include="Upload\2020121007191547UYE0ROVY.jpg" />
-    <Content Include="Upload\20201210082609306TY8U6EU.png" />
-    <Content Include="Upload\202012130404095424RS163D.png" />
-    <Content Include="Upload\2020121304080726Y0S0BE8R.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -1091,6 +1088,7 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\List.cshtml" />
+    <Content Include="Views\Home\Operate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
