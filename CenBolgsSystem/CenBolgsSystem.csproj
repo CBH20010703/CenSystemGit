@@ -1089,6 +1089,7 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\List.cshtml" />
     <Content Include="Views\Home\Operate.cshtml" />
+    <Content Include="Views\Admin\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

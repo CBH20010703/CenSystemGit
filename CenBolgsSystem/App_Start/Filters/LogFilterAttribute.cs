@@ -34,8 +34,6 @@ namespace CenBolgsSystem.App_Start.Filters
                  log_OperStatus=this.log_OperStatus
             });
             db.SaveChanges();
-           
-
             //执行完action后跳转后执行
         }
         //操作管理员Id

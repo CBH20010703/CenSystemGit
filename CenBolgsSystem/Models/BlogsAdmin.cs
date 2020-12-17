@@ -5,11 +5,13 @@ namespace CenBolgsSystem.Models
 {
     public class BlogsAdmin : IBlogsOperation<Admin>
     {
+
+        private int num;
         public Admin ConditionQuery(Admin id)
         {
             throw new NotImplementedException();
         }
-
+      
         public bool InsertData(Admin data)
         {
             throw new NotImplementedException();
@@ -22,12 +24,39 @@ namespace CenBolgsSystem.Models
 
         public int SelectCount()
         {
-            throw new NotImplementedException();
+            return this.num;
         }
 
         public IQueryable SelectData(int page, int limit, string title, int? type = null)
         {
-            throw new NotImplementedException();
+            db_CenSystemEntities db = new db_CenSystemEntities();
+            if (string.IsNullOrEmpty(title))
+            {
+
+                num = db.Admin.Count();
+                return db.Admin.OrderBy(c=>c.ad_Id).Skip((page - 1) * limit).Take(limit).Select(c => new
+                {
+                    c.ad_Id,
+                    c.ad_UserName,
+                    c.AdminType.Ad_TypeName,
+                    c.Article.Count,
+                    Opercount=c.Operatelog.Count
+                   
+                });
+
+
+            }
+            num = db.Admin.Where(c => c.ad_UserName.Contains(title)).Count();
+            return db.Admin.OrderBy(c => c.ad_Id).Where(c => c.ad_UserName.Contains(title)).Skip((page - 1) * limit).Take(limit).Select(c => new
+            {
+                c.ad_Id,
+                c.ad_UserName,
+                c.AdminType.Ad_TypeName,
+                c.Article.Count,
+                Opercount = c.Operatelog.Count
+
+            });
+
         }
 
         public bool UpDateData(Admin data)
@@ -57,7 +86,7 @@ namespace CenBolgsSystem.Models
                     return false;
                 }
              list.ad_PassWord = new_password;
-             return  db.SaveChanges() <= 0 ? false : true;
+             return  db.SaveChanges()>=0;
             }
         }
     }

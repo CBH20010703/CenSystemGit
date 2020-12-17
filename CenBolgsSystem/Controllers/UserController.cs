@@ -27,6 +27,7 @@ namespace CenBolgsSystem.Controllers
         {
             using (db_CenSystemEntities db = new db_CenSystemEntities())
             {
+                if(data.user_Status!=true) return Json(new { code = 1, msg = "改账户已被锁定" });
                 try
                 {
                     User list = db.User.FirstOrDefault(c => c.user_Email == data.user_Email);

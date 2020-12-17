@@ -16,24 +16,24 @@
                 , cols: [[
                     { field: 'log_Id',  title: 'ID', sort: true }
                     , { field: 'ad_UserName', title: '管理员' }
-                    , { field: 'log_Content',title: '操作方式', sort: true }
+                    , { field: 'log_Content',title: '操作方式'}
                     , { field: 'log_CreatDataTime',title: '操作时间' }
                     , { field: 'log_OperAction', title: '操作路径' }
                     , {
                         field: 'OpeType_Name', title: '危险等级', templet: function (data) {
                             
-                            var color = "#5FB878"
-                            switch (data.OpeType_Name) {
-                                case"正常操作":
-                                    color = "#5FB878"
-                                    break;
-                                case "危险操作":
-                                    color = "#FF5722"
-                                   break;
-                                default:
-                                    color="red"
+                                 var color = ""
+                                switch (data.OpeType_Name) {
+                                    case"正常操作":
+                                        color = "#5FB878"
+                                        break;
+                                    case "危险操作":
+                                        color = "#FF5722"
+                                       break;
+                                    default:
+                                        color="red"
                             }
-                            return "<em style=coolr:" + color + ">" + data.OpeType_Name+"</em>"
+                            return `<em style="color:${color}"><strong>${data.OpeType_Name}</strong></em>`
                         }
                     }
                 ]]
