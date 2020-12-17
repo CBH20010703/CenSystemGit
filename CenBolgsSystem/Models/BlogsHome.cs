@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
-using CenBolgsSystem.App_Start.Filters;
 namespace CenBolgsSystem.Models
 {
     public class BlogsHome : IBlogsOperation<Article>
@@ -131,7 +130,7 @@ namespace CenBolgsSystem.Models
                     {
                         c.ArticleType.type_Name,
                         c.article_Content,
-                        c.article_CreatDateTime,
+                        c.article_CreatDateTime, 
                         c.article_ImgUrl,
                         c.article_Status,
                         c.article_Title,
@@ -173,25 +172,25 @@ namespace CenBolgsSystem.Models
             throw new NotImplementedException();
         }
 
-       
+
         public bool RemoveAllData(List<Article> data)
         {
             using (db_CenSystemEntities db = new db_CenSystemEntities())
             {
                 try
                 {
-                   
+
                     foreach (Article item in data)
                     {
-                       Article list=db.Article.FirstOrDefault(c => item.article_Id == c.article_Id);
+                        Article list = db.Article.FirstOrDefault(c => item.article_Id == c.article_Id);
                         //删除文章前需要删除 对应文章的评论
                         if (RemoveArticleLeave(list))
                         {
                             db.Article.Remove(list);
-                        }                      
+                        }
                     }
-                    return db.SaveChanges()>=0;
-              
+                    return db.SaveChanges() >= 0;
+
                 }
                 catch (Exception)
                 {
@@ -201,7 +200,8 @@ namespace CenBolgsSystem.Models
             }
         }
 
-        private bool RemoveArticleLeave(Article art) {
+        private bool RemoveArticleLeave(Article art)
+        {
             try
             {
                 using (db_CenSystemEntities db = new db_CenSystemEntities())
@@ -212,7 +212,7 @@ namespace CenBolgsSystem.Models
                     {
                         db.BlogsLeave.Remove(item);
                     }
-                    return db.SaveChanges() >= 0 ;
+                    return db.SaveChanges() >= 0;
                 }
             }
             catch (Exception)
@@ -262,7 +262,7 @@ namespace CenBolgsSystem.Models
 
                 if (file == null)
                 {
-                    
+
                     queryList.article_Content = d.article_Content;
                     queryList.article_Type = d.article_Type;
                     queryList.article_Title = d.article_Title;
@@ -316,7 +316,7 @@ namespace CenBolgsSystem.Models
                 //System.IO.File.Delete(@"path");
                 return true;
             }
-            catch (Exception )
+            catch (Exception)
             {
                 return false;
             }

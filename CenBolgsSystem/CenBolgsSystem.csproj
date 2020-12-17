@@ -576,6 +576,7 @@
     <Content Include="Content\Logoin.css" />
     <Content Include="Content\public.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Step.css" />
     <Content Include="Content\themes\default.css" />
     <Content Include="Content\user\main.css" />
     <Content Include="Content\user\utli.css" />
@@ -751,6 +752,7 @@
     <Content Include="Scripts\blogs\yss\APlayer.min.js" />
     <Content Include="Scripts\blogs\yss\article.js" />
     <Content Include="Scripts\blogs\yss\gloable.js" />
+    <Content Include="Scripts\DateFormat.js" />
     <Content Include="Scripts\editormd.js" />
     <Content Include="Scripts\jparticle.min.js" />
     <Content Include="Scripts\jquery.cookie.min.js" />
@@ -1090,6 +1092,8 @@
     <Content Include="Views\User\List.cshtml" />
     <Content Include="Views\Home\Operate.cshtml" />
     <Content Include="Views\Admin\List.cshtml" />
+    <Content Include="Views\Admin\EditPower.cshtml" />
+    <Content Include="Views\User\EditPower.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

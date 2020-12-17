@@ -5,9 +5,9 @@ namespace CenBolgsSystem.App_Start
     public class LogoinFilterAttribute : ActionFilterAttribute
     {
 
-        
+
         public bool IsCheck { get; set; }
-      
+
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
             // 验证

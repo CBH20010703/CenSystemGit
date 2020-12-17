@@ -2,6 +2,8 @@
 using System;
 using System.Linq;
 using System.Web.Mvc;
+using CenBolgsSystem.App_Start.Filters;
+using CenBolgsSystem.App_Start;
 
 namespace CenBolgsSystem.Controllers
 {
@@ -18,8 +20,13 @@ namespace CenBolgsSystem.Controllers
         {
             return View();
         }
-
+        [LogoinFilter]
         public ActionResult List()
+        {
+            return View();
+        }
+        [LogoinFilter]
+        public ActionResult EditPower()
         {
             return View();
         }
@@ -27,7 +34,7 @@ namespace CenBolgsSystem.Controllers
         {
             using (db_CenSystemEntities db = new db_CenSystemEntities())
             {
-                if(data.user_Status!=true) return Json(new { code = 1, msg = "改账户已被锁定" });
+                if (data.user_Status != true) return Json(new { code = 1, msg = "改账户已被锁定" });
                 try
                 {
                     User list = db.User.FirstOrDefault(c => c.user_Email == data.user_Email);
@@ -67,11 +74,12 @@ namespace CenBolgsSystem.Controllers
             }
             return Json(new { code = 1, msg = "删除失败" }, JsonRequestBehavior.AllowGet);
         }
+
         public JsonResult SelectUserList(int page, int limit, string title, int? type = null)
         {
             return Json(new { code = 0, data = list.SelectData(page, limit, title, type), count = list.SelectCount() }, JsonRequestBehavior.AllowGet);
         }
-
+        [LogFilter("更新用户状态",1)]
         public JsonResult UserUpdataStatus(User userStatus)
         {
             if (list.UpDataStatus(userStatus))

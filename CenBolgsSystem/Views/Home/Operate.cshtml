@@ -7,6 +7,7 @@
 <script>
 
     window.onload = function () {
+      
         layui.use('table', function () {
             let table = layui.table;
             table.render({
@@ -16,8 +17,13 @@
                 , cols: [[
                     { field: 'log_Id',  title: 'ID', sort: true }
                     , { field: 'ad_UserName', title: '管理员' }
-                    , { field: 'log_Content',title: '操作方式'}
-                    , { field: 'log_CreatDataTime',title: '操作时间' }
+                    , { field: 'log_Content', title: '操作方式' }
+                    , {
+                        field: 'log_CreatDataTime', title: '操作时间', templet: function (data) {
+
+                            return `<em>${ChangeDateFormat(data.log_CreatDataTime)}</em>`
+                        }
+                        }
                     , { field: 'log_OperAction', title: '操作路径' }
                     , {
                         field: 'OpeType_Name', title: '危险等级', templet: function (data) {

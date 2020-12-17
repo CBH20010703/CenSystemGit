@@ -11,7 +11,7 @@ namespace CenBolgsSystem.Models
         {
             throw new NotImplementedException();
         }
-      
+
         public bool InsertData(Admin data)
         {
             throw new NotImplementedException();
@@ -34,14 +34,14 @@ namespace CenBolgsSystem.Models
             {
 
                 num = db.Admin.Count();
-                return db.Admin.OrderBy(c=>c.ad_Id).Skip((page - 1) * limit).Take(limit).Select(c => new
+                return db.Admin.OrderBy(c => c.ad_Id).Skip((page - 1) * limit).Take(limit).Select(c => new
                 {
                     c.ad_Id,
                     c.ad_UserName,
                     c.AdminType.Ad_TypeName,
                     c.Article.Count,
-                    Opercount=c.Operatelog.Count
-                   
+                    Opercount = c.Operatelog.Count
+
                 });
 
 
@@ -67,14 +67,15 @@ namespace CenBolgsSystem.Models
         {
             db_CenSystemEntities db = new db_CenSystemEntities();
             // 查询十条
-           return db.Operatelog.OrderByDescending(c => c.log_CreatDataTime).Skip(0).Take(10).Select(c=>new {
-            c.log_Id,
-            c.log_CreatDataTime,
-            c.Admin.ad_UserName,
-            c.OpeStatusType.OpeType_Name,
-            c.log_Content,
-            c.log_OperAction,
-           });
+            return db.Operatelog.OrderByDescending(c => c.log_CreatDataTime).Skip(0).Take(10).Select(c => new
+            {
+                c.log_Id,
+                c.log_CreatDataTime,
+                c.Admin.ad_UserName,
+                c.OpeStatusType.OpeType_Name,
+                c.log_Content,
+                c.log_OperAction,
+            });
         }
         public bool SetPassWord(string new_password, string old_password)
         {
@@ -85,8 +86,8 @@ namespace CenBolgsSystem.Models
                 {
                     return false;
                 }
-             list.ad_PassWord = new_password;
-             return  db.SaveChanges()>=0;
+                list.ad_PassWord = new_password;
+                return db.SaveChanges() >= 0;
             }
         }
     }

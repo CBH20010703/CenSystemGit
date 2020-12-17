@@ -73,7 +73,7 @@ namespace CenBolgsSystem.Controllers
 
         public JsonResult WelComeCount()
         {
-           
+
             return Json(new { data = list.BlogsStatusCount() }, JsonRequestBehavior.AllowGet);
         }
         [LogFilter("单选删除文章", 1)]
@@ -105,7 +105,7 @@ namespace CenBolgsSystem.Controllers
             }
             return Json(new { code = 1, msg = "删除失败" }, JsonRequestBehavior.AllowGet);
         }
-      
+
         public JsonResult SelectArticle(int page, int limit, string title, int? type = null)
         {
             return Json(new { code = 0, data = list.SelectData(page, limit, title, type), count = list.SelectCount(), }, JsonRequestBehavior.AllowGet);
