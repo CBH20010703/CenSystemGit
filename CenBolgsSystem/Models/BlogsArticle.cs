@@ -39,7 +39,7 @@ namespace CenBolgsSystem.Models
                 {
                     num = db.Article.Count();
 
-                    return db.Article.OrderByDescending(c => c.article_Id).Skip((page - 1) * limit).Take(limit).Select(c => new
+                    return db.Article.OrderByDescending(c => c.article_Id).Where(c=>c.article_Status==false).Skip((page - 1) * limit).Take(limit).Select(c => new
                     {
                         c.article_Title,
                         c.article_CreatDateTime,
@@ -53,7 +53,7 @@ namespace CenBolgsSystem.Models
                     });
                 }
                 num = db.Article.Where(c => c.article_Type == type).Count();
-                return db.Article.OrderByDescending(c => c.article_Id).Where(c => c.article_Type == type).Skip((page - 1) * limit).Take(limit).Select(c => new
+                return db.Article.OrderByDescending(c => c.article_Id).Where(c => c.article_Type == type&& c.article_Status == false).Skip((page - 1) * limit).Take(limit).Select(c => new
                 {
                     c.article_Title,
                     c.article_CreatDateTime,
@@ -67,7 +67,7 @@ namespace CenBolgsSystem.Models
                 });
             }
             num = db.Article.Where(c => c.article_Title.Contains(title)).Count();
-            return db.Article.OrderByDescending(c => c.article_Id).Where(c => c.article_Title.Contains(title)).Skip((page - 1) * limit).Take(limit).Select(c => new
+            return db.Article.OrderByDescending(c => c.article_Id).Where(c => c.article_Title.Contains(title)&& c.article_Status == false).Skip((page - 1) * limit).Take(limit).Select(c => new
             {
                 c.article_Title,
                 c.article_CreatDateTime,

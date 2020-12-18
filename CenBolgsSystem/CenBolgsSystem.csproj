@@ -895,6 +895,7 @@
     <Compile Include="App_Start\Filters\ErrorFilterAttribute.cs" />
     <Compile Include="App_Start\Filters\LogFilterAttribute.cs" />
     <Compile Include="App_Start\Filters\LogoinFilterAttribute.cs" />
+    <Compile Include="App_Start\Filters\SuperSUProFilterAttribute.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BlogsController.cs" />

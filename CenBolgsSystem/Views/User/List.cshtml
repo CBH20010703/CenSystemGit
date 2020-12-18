@@ -116,7 +116,10 @@
                     , { field: 'user_Name', title: '用户名', width: 120, }
                     , { field: 'user_Email', title: '用户邮箱' }
                     , { field: 'userType_Name', title: '用户类别', width: 120, }
-                    , { field: 'user_CreatDateTime', title: '创建时间', width: 200 }
+                    , {
+                        field: 'user_CreatDateTime', title: '创建时间', width: 200, templet: function (data) {
+                            return ` <em>${ChangeDateFormat(data.user_CreatDateTime)}</em>`
+                        }}
                     , { field: 'user_Status', title: '是否锁定', width: 110, templet: '#checkboxTpl', unresize: true }
                     , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 300 }
                 ]]

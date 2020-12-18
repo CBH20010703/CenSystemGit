@@ -46,7 +46,6 @@
 </script>
 <script>
 
-
     window.onload = function () {
         function isEmpty(value) {
             return (Array.isArray(value) && value.length === 0)
@@ -117,7 +116,11 @@
                     , { field: 'user_Id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true }
                     , { field: 'user_Name', title: '用户名',  }
                     , { field: 'user_Email', title: '用户邮箱' }
-                    , { field: 'user_CreatDateTime', title: '创建时间', width: 200 }
+                    , {
+                        field: 'user_CreatDateTime', title: '创建时间', width: 200, templet: function (data) {
+                            return `<em>${ChangeDateFormat(data.user_CreatDateTime)}</em>`
+                        }
+                    }
                     , { field: 'user_Status', title: '是否锁定', width: 110, templet: '#checkboxTpl', unresize: true,width: 120, }
                 ]]
                 , page: true

@@ -29,12 +29,27 @@ namespace CenBolgsSystem.Models
 
         public IQueryable SelectData(int page, int limit, string title, int? type = null)
         {
-            db_CenSystemEntities db = new db_CenSystemEntities();
-            if (string.IsNullOrEmpty(title))
+            try
             {
+                db_CenSystemEntities db = new db_CenSystemEntities();
+                if (string.IsNullOrEmpty(title))
+                {
 
-                num = db.Admin.Count();
-                return db.Admin.OrderBy(c => c.ad_Id).Skip((page - 1) * limit).Take(limit).Select(c => new
+                    num = db.Admin.Count();
+                    return db.Admin.OrderBy(c => c.ad_Id).Skip((page - 1) * limit).Take(limit).Select(c => new
+                    {
+                        c.ad_Id,
+                        c.ad_UserName,
+                        c.AdminType.Ad_TypeName,
+                        c.Article.Count,
+                        Opercount = c.Operatelog.Count
+
+                    });
+
+
+                }
+                num = db.Admin.Where(c => c.ad_UserName.Contains(title)).Count();
+                return db.Admin.OrderBy(c => c.ad_Id).Where(c => c.ad_UserName.Contains(title)).Skip((page - 1) * limit).Take(limit).Select(c => new
                 {
                     c.ad_Id,
                     c.ad_UserName,
@@ -43,19 +58,12 @@ namespace CenBolgsSystem.Models
                     Opercount = c.Operatelog.Count
 
                 });
-
-
             }
-            num = db.Admin.Where(c => c.ad_UserName.Contains(title)).Count();
-            return db.Admin.OrderBy(c => c.ad_Id).Where(c => c.ad_UserName.Contains(title)).Skip((page - 1) * limit).Take(limit).Select(c => new
+            catch (Exception)
             {
-                c.ad_Id,
-                c.ad_UserName,
-                c.AdminType.Ad_TypeName,
-                c.Article.Count,
-                Opercount = c.Operatelog.Count
 
-            });
+                return null;
+            }
 
         }
 

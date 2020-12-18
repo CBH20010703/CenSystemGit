@@ -66,6 +66,7 @@ namespace CenBolgsSystem.Controllers
             }
             return Json(new { code = 1, msg = "注册失败请重新再试" }, JsonRequestBehavior.AllowGet);
         }
+        [LogFilter("删除用户", 2)]
         public JsonResult RemoveUser(User data)
         {
             if (list.RemoveData(data))
@@ -74,7 +75,7 @@ namespace CenBolgsSystem.Controllers
             }
             return Json(new { code = 1, msg = "删除失败" }, JsonRequestBehavior.AllowGet);
         }
-
+        
         public JsonResult SelectUserList(int page, int limit, string title, int? type = null)
         {
             return Json(new { code = 0, data = list.SelectData(page, limit, title, type), count = list.SelectCount() }, JsonRequestBehavior.AllowGet);
