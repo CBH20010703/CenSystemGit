@@ -909,22 +909,21 @@
     <Compile Include="Models\Admin.cs">
       <DependentUpon>BologsData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\AdminType.cs">
       <DependentUpon>BologsData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AritlceBolgs.cs" />
+    <Compile Include="Models\ArticleSystem.cs" />
     <Compile Include="Models\Article.cs">
       <DependentUpon>BologsData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ArticleType.cs">
       <DependentUpon>BologsData.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BlogsAdmin.cs" />
-    <Compile Include="Models\BlogsArticle.cs" />
-    <Compile Include="Models\BlogsHome.cs" />
     <Compile Include="Models\BlogsLeave.cs">
       <DependentUpon>BologsData.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BlogsUser.cs" />
     <Compile Include="Models\BologsData.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -943,7 +942,9 @@
     <Compile Include="Models\ErrorLog.cs">
       <DependentUpon>BologsData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\IAccount.cs" />
     <Compile Include="Models\IBlogsOperation.cs" />
+    <Compile Include="Models\IBlogsSystem.cs" />
     <Compile Include="Models\Operatelog.cs">
       <DependentUpon>BologsData.tt</DependentUpon>
     </Compile>
@@ -953,6 +954,7 @@
     <Compile Include="Models\User.cs">
       <DependentUpon>BologsData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Models\UserType.cs">
       <DependentUpon>BologsData.tt</DependentUpon>
     </Compile>

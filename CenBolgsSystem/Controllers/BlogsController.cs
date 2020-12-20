@@ -1,13 +1,12 @@
-﻿using CenBolgsSystem.Models;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
-
+using CenBolgsSystem.Models;
 namespace CenBolgsSystem.Controllers
 {
     public class BlogsController : Controller
     {
         // GET: Blogs
-        BlogsArticle list = new BlogsArticle();
+        AritlceBolgs list = new AritlceBolgs();
         public ActionResult Index()
         {
             return View();

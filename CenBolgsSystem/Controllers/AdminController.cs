@@ -2,13 +2,15 @@
 using CenBolgsSystem.App_Start.Filters;
 using CenBolgsSystem.Models;
 using System.Web.Mvc;
+
 namespace CenBolgsSystem.Controllers
 {
     [ErrorFilter]
     [LogoinFilter]
     public class AdminController : Controller
     {
-        BlogsAdmin Ad = new BlogsAdmin();
+ 
+        AdminAccount Ad = new AdminAccount();
         // GET: Admin
         public ActionResult SetAdminPwd()
         {
@@ -24,11 +26,13 @@ namespace CenBolgsSystem.Controllers
         {
             return View();
         }
+        
         public JsonResult GetAdData(int page, int limit, string title)
         {
             return Json(new { code = 0, data = Ad.SelectData(page, limit, title), count = Ad.SelectCount() }, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
+        [LogFilter("修改管理员密码",3)]
         public ActionResult SetAdminPwd(string new_password, string old_password)
         {
             if (Ad.SetPassWord(new_password, old_password))
@@ -36,12 +40,23 @@ namespace CenBolgsSystem.Controllers
                 return Json(new { code = 0, msg = "修改成功" }, JsonRequestBehavior.AllowGet);
             }
             return Json(new { code = 1, msg = "修改失败" }, JsonRequestBehavior.AllowGet);
-
         }
-
+        public JsonResult RemoveAdmin(Admin d)
+        {
+            if (d.ad_Id == 1)
+            {
+                return Json(new { code = 1, msg = "无法删除超级管理员" }, JsonRequestBehavior.AllowGet);
+            }
+            if (Ad.RemoveData(d))
+            {
+                return Json(new { code = 0, msg = "删除成功" }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { code = 1, msg = "删除失败！ Eroor" }, JsonRequestBehavior.AllowGet);
+        
+    }
         public ActionResult GetLog()
         {
-            return Json(new { code = 0, data = new BlogsAdmin().SelectAdminLog() }, JsonRequestBehavior.AllowGet);
+            return Json(new { code = 0, data =Ad.SelectAdminLog() }, JsonRequestBehavior.AllowGet);
         }
     }
 }

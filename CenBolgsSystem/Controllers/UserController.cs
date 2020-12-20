@@ -9,7 +9,7 @@ namespace CenBolgsSystem.Controllers
 {
     public class UserController : Controller
     {
-        BlogsUser list = new BlogsUser();
+        UserAccount list = new UserAccount();
         // GET: User
         public ActionResult Index()
         {
@@ -62,7 +62,7 @@ namespace CenBolgsSystem.Controllers
         }
         public JsonResult InsertUser(User data)
         {
-            if (list.InsertData(data))
+            if (list.InsertCcount(data))
             {
                 return Json(new { code = 0, msg = "恭喜你,注册成功!" }, JsonRequestBehavior.AllowGet);
             }
@@ -71,6 +71,10 @@ namespace CenBolgsSystem.Controllers
         [LogFilter("删除用户", 2)]
         public JsonResult RemoveUser(User data)
         {
+            if (data.user_Status == false)
+            {
+                return Json(new { code = 1, msg = "非锁定状态无法删除" }, JsonRequestBehavior.AllowGet);
+            }
             if (list.RemoveData(data))
             {
                 return Json(new { code = 0, msg = "删除成功!" }, JsonRequestBehavior.AllowGet);

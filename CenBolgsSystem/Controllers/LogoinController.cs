@@ -11,6 +11,7 @@ namespace CenBolgsSystem.Controllers
             return View();
         }
         [HttpPost]
+
         public ActionResult Index(Admin d)
         {
             db_CenSystemEntities db = new db_CenSystemEntities();

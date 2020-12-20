@@ -126,11 +126,10 @@
                         console.log(data)
                         layer.confirm('你确定要删除数据吗', function (index) {
                             $.ajax({
-                                url: "/User/RemoveUser",
+                                url: "/Admin/RemoveAdmin",
                                 type: "post",
                                 data: {
-                                    user_Id: data.user_Id,
-                                    user_Status: data.user_Status
+                                    ad_Id: data.ad_Id,
                                 },
                                 dataType: "JSON",
                                 success: function (res) {

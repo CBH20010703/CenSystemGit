@@ -11,7 +11,7 @@ namespace CenBolgsSystem.Controllers
     [LogoinFilter]
     public class HomeController : Controller
     {
-        BlogsHome list = new BlogsHome();
+        ArticleSystem list = new ArticleSystem();
         // GET: Home
         public ActionResult Index()
         {
@@ -51,11 +51,15 @@ namespace CenBolgsSystem.Controllers
         [LogFilter("编辑文章", 2)]
         public JsonResult Exit(Article data, HttpPostedFileBase file)
         {
-            if (list.ExitArticle(data, file) <= 0)
+            if (data.article_Status == true)
             {
-                return Json(new { code = 1, msg = "上传失败" }, JsonRequestBehavior.AllowGet);
+                return Json(new { code = 1, msg = "无法编辑锁定状态文章" }, JsonRequestBehavior.AllowGet);
             }
-            return Json(new { code = 0, msg = "上传成功" }, JsonRequestBehavior.AllowGet);
+            if (list.UpDateData(data, file))
+            {
+                return Json(new { code = 0, msg = "更新成功" }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { code = 1, msg = "更新失败" }, JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetoneArticle(Article d)
         {

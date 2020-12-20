@@ -1,33 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 
 namespace CenBolgsSystem.Models
 {
 
-    public class BlogsUser : IBlogsOperation<User>
+    public class UserAccount : IAccount<User>, IBlogsSystem<User>
     {
-        private int num { get; set; }
-        public User ConditionQuery(User id)
+        private int num;
+        //查询单条
+        public User ConditionQuery(User data)
         {
-            throw new NotImplementedException();
-        }
-
-        public bool InsertData(User data)
-        {
-            try
+            if (data == null)
             {
-                db_CenSystemEntities db = new db_CenSystemEntities();
-                db.User.Add(InitUser(data));
-                return db.SaveChanges() <= 0 ? false : true;
+                return null;
             }
-            catch (Exception)
-            {
-
-                return false;
-            }
+            db_CenSystemEntities db = new db_CenSystemEntities();
+            db.Configuration.ProxyCreationEnabled = false;
+            return db.User.FirstOrDefault(c => c.user_Id == data.user_Id);
         }
-        // 初始化 用户
+        // 初始化用户
         private User InitUser(User data)
         {
             Random rd = new Random();
@@ -42,7 +35,7 @@ namespace CenBolgsSystem.Models
         }
         public bool RemoveData(User data)
         {
-            if (data.user_Status == true) return false;
+            
             using (db_CenSystemEntities db = new db_CenSystemEntities())
             {
                 List<BlogsLeave> list = db.BlogsLeave.Where(c => c.leave_userId == data.user_Id).ToList();
@@ -55,7 +48,22 @@ namespace CenBolgsSystem.Models
                 return db.SaveChanges() <= 0 ? false : true;
             }
         }
+        //用户注册
+        public bool InsertCcount(User data)
+        {
+            try
+            {
+                db_CenSystemEntities db = new db_CenSystemEntities();
+                db.User.Add(InitUser(data));
+                return db.SaveChanges() <= 0 ? false : true;
+            }
+            catch (Exception)
+            {
 
+                return false;
+            }
+        }
+        //设置用户状态
         public bool UpDataStatus(User Userstatus)
         {
             try
@@ -72,12 +80,11 @@ namespace CenBolgsSystem.Models
                 throw;
             }
         }
-
         public int SelectCount()
         {
             return num;
         }
-
+        // 查询
         public IQueryable SelectData(int page, int limit, string title, int? type = null)
         {
             db_CenSystemEntities db = new db_CenSystemEntities();
@@ -111,12 +118,20 @@ namespace CenBolgsSystem.Models
                 c.user_ImgUrl,
                 c.user_CreatDateTime
             });
-
         }
-
-        public bool UpDateData(User data)
+        // 修改用户密码密码
+        public bool SetPassWord(string new_password, string old_password)
         {
-            throw new NotImplementedException();
+            using (db_CenSystemEntities db = new db_CenSystemEntities())
+            {
+                var list = db.User.FirstOrDefault(c => c.user_PassWord == old_password);
+                if (list == null)
+                {
+                    return false;
+                }
+                list.user_PassWord = new_password;
+                return db.SaveChanges() > 0;
+            }
         }
     }
 }

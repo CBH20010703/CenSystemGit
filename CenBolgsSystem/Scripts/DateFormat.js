@@ -12,5 +12,5 @@
     var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
     var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
     var second = date.getMilliseconds() / 1000 < 10 ? "0" + parseInt(date.getMilliseconds() / 1000) : parseInt(date.getMilliseconds() / 1000);
-    return date.getFullYear() + "-" + month + "-" + currentDate + " " + hours + ":" + minutes + ":" + second;
+    return date.getFullYear() + "-" + month + "-" + currentDate + " " + hours + ":" + minutes
 };

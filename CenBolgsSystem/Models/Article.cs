@@ -36,5 +36,7 @@ namespace CenBolgsSystem.Models
         public virtual ArticleType ArticleType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BlogsLeave> BlogsLeave { get; set; }
+
+       
     }
 }

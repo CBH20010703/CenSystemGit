@@ -1,19 +1,19 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web;
 
 namespace CenBolgsSystem.Models
 {
-    interface IBlogsOperation<T>
+  
+    interface IBlogsOperation<T> 
     {
-        bool InsertData(T data);
+        bool InsertData(T data, HttpPostedFileBase file);
 
         bool RemoveData(T data);
 
-        IQueryable SelectData(int page, int limit, string title, int? type = null);
-
-        bool UpDateData(T data);
-
-        T ConditionQuery(T id);
-
-        int SelectCount();
+        bool UpDateData(T data,HttpPostedFileBase file);
     }
 }

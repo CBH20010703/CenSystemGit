@@ -11,13 +11,11 @@
                     <input type="hidden" value="" id="blogtypeid" />
                     <section class="article-item">
                         <aside class="title" style="line-height:1.5;">
-                            <h4 id="Admin-title">Java学习路线推荐</h4>
+                            <h4 id="Admin-title"></h4>
                             <p class="fc-grey fs-14">
-                                <small>
-                                    作者：<a href="javascript:void(0)" target="_blank" class="fc-link">小岑</a>
-                                </small>
-                                <small class="ml10">围观群众：<i class="readcount">121</i></small>
-                                <small class="ml10">更新于 <label id="Admin-date">2020-07-1:11:20:21</label> </small>
+                                <small class="ml10">作者：<i class="readcount" id="admin"></i></small>
+                                <small class="ml10">围观群众：<i class="readcount" id="red-num">121</i></small>
+                                <small class="ml10">更新于 <label id="Admin-date"></label> </small>
                             </p>
 
                         </aside>
@@ -107,7 +105,8 @@
             layer.msg("访问错误", { icon: 2 }, function () {
                 window.location.href = "/Blogs/blogs"
             })
-        } else {
+              } else {
+                  // 请求留言
             function AddLeave() {
                 $.ajax({
                     type: "post",
@@ -115,6 +114,7 @@
                     url: "/Blogs/SelectArticleLeave",
                     success: function (data) {
                         console.log(data)
+                        $("#admin").html(data.data[0].ad_UserName)
                         $("#Leave_text").html("");
                         $("#message-list").html("")
                         for (var i = data.data.length - 1; i >= 0; i--) {
@@ -132,8 +132,8 @@
                                                         </div>
                                                         <p class="info info-footer">
                                                             <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                                            <span>深圳</span>
-                                                            <span class="comment-time"> ${data.data[i].leave_creatdatetime}</span>
+                                                            <span>评论时间</span>
+                                                            <span class="comment-time"> ${ChangeDateFormat(data.data[i].leave_creatdatetime)}</span>
                                                             <!-- <a href="javascript:;" class="btn-reply" data-targetid="1" data-targetname="冰">回复</a> -->
                                                         </p>
                                                     </div>
@@ -186,7 +186,8 @@
                             }
                             $("#footer-title").html(data.data.article_Title)
                             $("#Admin-title").html(data.data.article_Title)
-
+                            $("#red-num").html(data.data.article_PV)
+                            $("#Admin-date").html(data.data.article_CreatDateTime)
                             let dataArr = data.data.article_CreatDateTime.split("-")
 
                             $("#AdminTime>span").each(function (item) {

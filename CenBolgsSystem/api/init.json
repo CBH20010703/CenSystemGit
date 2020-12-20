@@ -40,12 +40,6 @@
               "href": "/Admin/List",
               "icon": "layui-icon layui-icon-table",
               "target": "_self"
-            },
-            {
-              "title": "Admin授权",
-              "href": "/Admin/EditPower",
-              "icon": "layui-icon layui-icon-auz",
-              "target": "_self"
             }
           ]
 
@@ -60,12 +54,6 @@
               "title": "用户列表",
               "href": "/User/List",
               "icon": "layui-icon layui-icon-table",
-              "target": "_self"
-            },
-            {
-              "title": "用户授权",
-              "href": "/User/EditPower",
-              "icon": "layui-icon layui-icon-auz",
               "target": "_self"
             }
           ]

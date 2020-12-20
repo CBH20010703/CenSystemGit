@@ -1,30 +1,41 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 
 namespace CenBolgsSystem.Models
 {
-    public class BlogsAdmin : IBlogsOperation<Admin>
+    public class AdminAccount : IAccount<Admin>, IBlogsSystem<Admin>
     {
-
         private int num;
-        public Admin ConditionQuery(Admin id)
+        public Admin ConditionQuery(Admin data)
         {
-            throw new NotImplementedException();
-        }
+            if (data == null)
+            {
+                return null;
+            }
+            db_CenSystemEntities db = new db_CenSystemEntities();
+            db.Configuration.ProxyCreationEnabled = false;
 
-        public bool InsertData(Admin data)
-        {
-            throw new NotImplementedException();
+            return db.Admin.FirstOrDefault(c => c.ad_Id == data.ad_Id);
         }
-
         public bool RemoveData(Admin data)
         {
-            throw new NotImplementedException();
+            using (db_CenSystemEntities db = new db_CenSystemEntities())
+            {
+                Admin list = db.Admin.FirstOrDefault(c => c.ad_Id == data.ad_Id);
+              
+                if (list == null)
+                {
+                    return false;
+                }
+                db.Admin.Remove(list);
+                return db.SaveChanges() > 0;
+            }
         }
-
         public int SelectCount()
         {
-            return this.num;
+            return num;
         }
 
         public IQueryable SelectData(int page, int limit, string title, int? type = null)
@@ -64,18 +75,13 @@ namespace CenBolgsSystem.Models
 
                 return null;
             }
-
         }
 
-        public bool UpDateData(Admin data)
-        {
-            throw new NotImplementedException();
-        }
         public IQueryable SelectAdminLog()
         {
             db_CenSystemEntities db = new db_CenSystemEntities();
-            // 查询十条
-            return db.Operatelog.OrderByDescending(c => c.log_CreatDataTime).Skip(0).Take(10).Select(c => new
+            // 查询15条
+            return db.Operatelog.OrderByDescending(c => c.log_CreatDataTime).Skip(0).Take(15).Select(c => new
             {
                 c.log_Id,
                 c.log_CreatDataTime,
@@ -95,8 +101,27 @@ namespace CenBolgsSystem.Models
                     return false;
                 }
                 list.ad_PassWord = new_password;
-                return db.SaveChanges() >= 0;
+                return db.SaveChanges() > 0;
             }
         }
+      
+        public bool InsertCcount(Admin data)
+        {
+            try
+            {
+                using(db_CenSystemEntities db=new db_CenSystemEntities())
+                {
+                    db.Admin.Add(data);
+                    return db.SaveChanges()> 0;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+        }
+
+       
     }
 }
