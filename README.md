@@ -30,3 +30,5 @@
 ### 修复 前台 bolgs read 读文章 bug 如果传入不对的值 将会被重定向 到 Bolgs/blogs
 
 ### 2020-12-20 发现一个奇怪的 bug  如果我把vue 代码提交文章上去就会报错甚至显示不出来 影响 后台运行
+
+### 2020-12-21  Models 层删除之前所有接口 以及类 进行全部重写 新增 接口 IAccount<T>  IBlogsSystem<T>  IBlogsOperation<T> 实现类 AdminAccount  UserAccount  ArticleBlogs  ArticleSystem 
