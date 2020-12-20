@@ -1095,6 +1095,8 @@
     <Content Include="Views\Admin\List.cshtml" />
     <Content Include="Views\Admin\EditPower.cshtml" />
     <Content Include="Views\User\EditPower.cshtml" />
+    <Content Include="Views\Blogs\Index.cshtml" />
+    <Content Include="Views\Shared\_BlogsHeader.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

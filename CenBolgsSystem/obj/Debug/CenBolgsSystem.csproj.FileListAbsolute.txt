@@ -159,8 +159,8 @@ C:\Users\47790\source\repos\CenSystemGit\CenBolgsSystem\bin\zh-Hans\System.Web.W
 C:\Users\47790\source\repos\CenSystemGit\CenBolgsSystem\bin\zh-Hans\System.Web.Webpages.Razor.resources.dll
 C:\Users\47790\source\repos\CenSystemGit\CenBolgsSystem\bin\zh-Hans\System.Web.Helpers.resources.dll
 C:\Users\47790\source\repos\CenSystemGit\CenBolgsSystem\bin\zh-Hans\System.Web.Mvc.resources.dll
-C:\Users\47790\source\repos\CenSystemGit\CenBolgsSystem\obj\Debug\CenBolgsSystem.csprojAssemblyReference.cache
 C:\Users\47790\source\repos\CenSystemGit\CenBolgsSystem\obj\Debug\CenBolgsSystem.csproj.CoreCompileInputs.cache
 C:\Users\47790\source\repos\CenSystemGit\CenBolgsSystem\obj\Debug\CenBolgsSystem.csproj.CopyComplete
 C:\Users\47790\source\repos\CenSystemGit\CenBolgsSystem\obj\Debug\CenBolgsSystem.dll
 C:\Users\47790\source\repos\CenSystemGit\CenBolgsSystem\obj\Debug\CenBolgsSystem.pdb
+C:\Users\47790\source\repos\CenSystemGit\CenBolgsSystem\obj\Debug\CenBolgsSystem.csprojAssemblyReference.cache

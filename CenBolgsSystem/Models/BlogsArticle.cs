@@ -9,7 +9,7 @@ namespace CenBolgsSystem.Models
         public Article ConditionQuery(Article id)
         {
             db_CenSystemEntities db = new db_CenSystemEntities();
-
+           
             db.Configuration.ProxyCreationEnabled = false;
             db.SaveChanges();
             return db.Article.FirstOrDefault(c => c.article_Id == id.article_Id);

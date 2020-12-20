@@ -142,7 +142,10 @@
                 , bindAction: '#sub'
                 , done: function (res, file, result) {
                     if (res.code == 0) {
-                        layer.msg(res.msg, { icon: 1 })
+                        layer.msg(res.msg, { icon: 1 }, function () {
+                            window.location.href = "/Home/EditArticle"
+                        })
+                      
                         return
                     }
                     layer.msg(res.msg, { icon: 2 })

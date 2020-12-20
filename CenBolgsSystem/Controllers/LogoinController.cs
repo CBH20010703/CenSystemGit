@@ -21,7 +21,6 @@ namespace CenBolgsSystem.Controllers
                 Response.Cookies["AdminName"].Value = list.ad_UserName;
                 Response.Cookies["AdminId"].Value = list.ad_Id.ToString();
                 Session["AdminName"] = list.ad_UserName;
-
                 Session["AdminId"] = list.ad_Id;
                 return Json(new { code = 0, msg = "登录成功" }, JsonRequestBehavior.AllowGet);
             }

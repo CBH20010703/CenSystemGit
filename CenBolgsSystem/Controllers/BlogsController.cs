@@ -42,10 +42,15 @@ namespace CenBolgsSystem.Controllers
             }
             return Json(new { code = 1, msg = "留言失败" }, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult GetReadArticle(Article d)
+        public ActionResult GetReadArticle(Article d)
         {
             db_CenSystemEntities db = new db_CenSystemEntities();
-            db.Article.FirstOrDefault(c => c.article_Id == d.article_Id).article_PV += 1;
+            var datalist = db.Article.FirstOrDefault(c => c.article_Id == d.article_Id);
+            if (datalist == null)
+            {
+                return Json(new { code = 1, msg = "Error" },JsonRequestBehavior.AllowGet);
+            }
+            datalist.article_PV += 1;
             db.SaveChanges();
             return Json(new { code = 0, data = list.ConditionQuery(d) }, JsonRequestBehavior.AllowGet);
         }

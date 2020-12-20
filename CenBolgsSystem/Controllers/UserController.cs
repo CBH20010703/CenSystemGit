@@ -34,20 +34,22 @@ namespace CenBolgsSystem.Controllers
         {
             using (db_CenSystemEntities db = new db_CenSystemEntities())
             {
-                if (data.user_Status != true) return Json(new { code = 1, msg = "改账户已被锁定" });
+                if (data.user_Status == true) return Json(new { code = 1, msg = "改账户已被锁定" });
                 try
                 {
                     User list = db.User.FirstOrDefault(c => c.user_Email == data.user_Email);
                     if (list == null)
                     {
+                       
                         return Json(new { code = 1, msg = "账户不存在" });
                     }
                     if (list.user_Email == data.user_Email && list.user_PassWord == data.user_PassWord)
                     {
 
-                        Response.Cookies["UserName"].Value = list.user_Name;
+                        Response.Cookies["UserImg"].Value = list.user_ImgUrl;
                         Response.Cookies["UserEmail"].Value = list.user_Email;
                         Response.Cookies["UserId"].Value = list.user_Id.ToString();
+                       
                         return Json(new { code = 0, msg = "登录成功" });
                     }
                     return Json(new { code = 1, msg = "账号或密码不存在" });

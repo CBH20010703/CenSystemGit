@@ -1,70 +1,8 @@
 ﻿
 @{
-    Layout = null;
+    Layout ="~/Views/Shared/_BlogsHeader.cshtml";
+    ViewBag.Title = "Article";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link href="~/Scripts/layui-v2.5.5/css/layui.css" rel="stylesheet" />
-    <link href="~/Fonts/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
-    <link href="~/Fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/Content/blogs/gloable.css" rel="stylesheet" />
-    <link href="~/Content/blogs/master.css" rel="stylesheet" />
-    <link href="~/Content/blogs/nprogress.css" rel="stylesheet" />
-    <link href="~/Content/blogs/blog.css" rel="stylesheet" />
-
-    <style>
-        .addactive {
-            position: relative;
-        }
-
-            .addactive:after {
-                display: block;
-                content: "";
-                position: absolute;
-                width: 5px;
-                height: 40px;
-                background: #6bc30d;
-                right: 0;
-                top: 0;
-                z-index: 999;
-            }
-    </style>
-</head>
-
-<body>
-    <div class="header">
-    </div>
-    <header class="gird-header">
-        <div class="header-fixed">
-            <div class="header-inner">
-                <a href="javascript:void(0)" class="header-logo" id="logo">Mr.cen</a>
-                <nav class="nav" id="nav">
-                    <ul>
-
-                        <li><a href="/Blogs/blogs">首页</a></li>
-                        <li><a href="/Blogs/index">博客</a></li>
-                        <li><a href="#">留言</a></li>
-                        <li><a href="#">日记</a></li>
-                        <li><a href="#">友链</a></li>
-
-                    </ul>
-                </nav>
-                <a href="/User/QQLogin" class="blog-user">
-                    <i class="fa fa-qq"></i>
-                </a>
-                <a class="phone-menu">
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                </a>
-            </div>
-        </div>
-    </header>
     <div class="doc-container" id="doc-container">
         <div class="container-fixed">
             <div class="col-content">
@@ -167,10 +105,7 @@
             </div>
         </div>
     </footer>
-    <script src="~/Scripts/layui-v2.5.5/layui.js"></script>
-    <script src="~/Scripts/blogs/yss/gloable.js"></script>
-    <script src="~/Scripts/blogs/plugins/nprogress.js"></script>
-    <script src="~/Scripts/blogs/yss/article.js"></script>
+
     <script>
         window.onload = function () {
             var $ = layui.jquery;
@@ -285,5 +220,4 @@
         }
 
     </script>
-</body>
-</html>
+
