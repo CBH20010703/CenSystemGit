@@ -24,14 +24,29 @@ namespace CenBolgsSystem.Models
             using (db_CenSystemEntities db = new db_CenSystemEntities())
             {
                 Admin list = db.Admin.FirstOrDefault(c => c.ad_Id == data.ad_Id);
-              
-                if (list == null)
+                if (RemoveLog(list))
                 {
-                    return false;
+                    if (list == null)
+                    {
+                        return false;
+                    }
+                    db.Admin.Remove(list);
+                    return db.SaveChanges() > 0;
                 }
-                db.Admin.Remove(list);
-                return db.SaveChanges() > 0;
+                return false;
+               
             }
+        }
+        private bool RemoveLog(Admin data)
+        {
+            db_CenSystemEntities db = new db_CenSystemEntities();
+          var list= db.Operatelog.Where(c => c.log_OperatelogAdmin == data.ad_Id).ToList();
+            if (list.Count == 0) return true;
+            foreach (var item in list)
+            {
+                db.Operatelog.Remove(item);
+            }
+            return db.SaveChanges() > 0;
         }
         public int SelectCount()
         {
@@ -111,6 +126,7 @@ namespace CenBolgsSystem.Models
             {
                 using(db_CenSystemEntities db=new db_CenSystemEntities())
                 {
+                    data.ad_Type = 2;
                     db.Admin.Add(data);
                     return db.SaveChanges()> 0;
                 }

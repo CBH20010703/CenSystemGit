@@ -152,7 +152,7 @@ namespace CenBolgsSystem.Models
                     {
                         db.BlogsLeave.Remove(item);
                     }
-                    return db.SaveChanges() >= 0;
+                    return db.SaveChanges() > 0;
                 }
             }
             catch (Exception)

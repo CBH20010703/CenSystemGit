@@ -61,6 +61,7 @@ namespace CenBolgsSystem.Controllers
             }
             return Json(new { code = 1, msg = "更新失败" }, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
         public JsonResult GetoneArticle(Article d)
         {
             return Json(new { code = 0, data = list.ConditionQuery(d) }, JsonRequestBehavior.AllowGet);
@@ -93,7 +94,7 @@ namespace CenBolgsSystem.Controllers
             }
             return Json(new { code = 1, msg = "删除失败" }, JsonRequestBehavior.AllowGet);
         }
-        [LogFilter("多选删除文章", 2)]
+        [LogFilter("多选删除文章", 3)]
         public JsonResult DeleteAllArticle(List<Article> data)
         {
             foreach (var item in data)

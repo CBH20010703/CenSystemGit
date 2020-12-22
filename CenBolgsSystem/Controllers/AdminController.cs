@@ -41,6 +41,17 @@ namespace CenBolgsSystem.Controllers
             }
             return Json(new { code = 1, msg = "修改失败" }, JsonRequestBehavior.AllowGet);
         }
+        [LogFilter("添加管理员", 3)]
+        public ActionResult AddAdmin(Admin data)
+        {
+           
+            if (Ad.InsertCcount(data))
+            {
+                return Json(new { code = 0, msg = "添加成功" }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { code = 0, msg = "添加失败" }, JsonRequestBehavior.AllowGet);
+        }
+        [LogFilter("删除管理员", 3)]
         public JsonResult RemoveAdmin(Admin d)
         {
             if (d.ad_Id == 1)

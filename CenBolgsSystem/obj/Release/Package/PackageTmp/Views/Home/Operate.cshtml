@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Operate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<table class="layui-hide" id="test"></table>
+<script>
+
+    window.onload = function () {
+      
+        layui.use('table', function () {
+            let table = layui.table;
+            table.render({
+                elem: '#test'
+                , url: '/Admin/GetLog'
+                , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                , cols: [[
+                    { field: 'log_Id',  title: 'ID', sort: true }
+                    , { field: 'ad_UserName', title: '管理员' }
+                    , { field: 'log_Content', title: '操作方式' }
+                    , {
+                        field: 'log_CreatDataTime', title: '操作时间', templet: function (data) {
+
+                            return `<em>${ChangeDateFormat(data.log_CreatDataTime)}</em>`
+                        }
+                        }
+                    , { field: 'log_OperAction', title: '操作路径' }
+                    , {
+                        field: 'OpeType_Name', title: '危险等级', templet: function (data) {
+                            
+                                 var color = ""
+                                switch (data.OpeType_Name) {
+                                    case"正常操作":
+                                        color = "#5FB878"
+                                        break;
+                                    case "危险操作":
+                                        color = "#FF5722"
+                                       break;
+                                    default:
+                                        color="red"
+                            }
+                            return `<em style="color:${color}"><strong>${data.OpeType_Name}</strong></em>`
+                        }
+                    }
+                ]]
+            });
+        });
+    }
+</script>
+
+

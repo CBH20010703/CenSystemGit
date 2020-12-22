@@ -100,7 +100,7 @@
           <Property Name="userType_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="userType_Name" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Admin__ad_Type__37A5467C">
+        <Association Name="FK__Admin__ad_Type__239E4DCF">
           <End Role="AdminType" Type="Self.AdminType" Multiplicity="1" />
           <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
           <ReferentialConstraint>
@@ -112,7 +112,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__article__15502E78">
+        <Association Name="FK__Article__article__24927208">
           <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -124,7 +124,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__article__239E4DCF">
+        <Association Name="FK__Article__article__25869641">
           <End Role="ArticleType" Type="Self.ArticleType" Multiplicity="1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -184,7 +184,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__User__user_Type__619B8048">
+        <Association Name="FK__User__user_Type__2A4B4B5E">
           <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
@@ -207,15 +207,15 @@
           <EntitySet Name="OpeStatusType" EntityType="Self.OpeStatusType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Admin__ad_Type__37A5467C" Association="Self.FK__Admin__ad_Type__37A5467C">
+          <AssociationSet Name="FK__Admin__ad_Type__239E4DCF" Association="Self.FK__Admin__ad_Type__239E4DCF">
             <End Role="AdminType" EntitySet="AdminType" />
             <End Role="Admin" EntitySet="Admin" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__article__15502E78" Association="Self.FK__Article__article__15502E78">
+          <AssociationSet Name="FK__Article__article__24927208" Association="Self.FK__Article__article__24927208">
             <End Role="Admin" EntitySet="Admin" />
             <End Role="Article" EntitySet="Article" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__article__239E4DCF" Association="Self.FK__Article__article__239E4DCF">
+          <AssociationSet Name="FK__Article__article__25869641" Association="Self.FK__Article__article__25869641">
             <End Role="ArticleType" EntitySet="ArticleType" />
             <End Role="Article" EntitySet="Article" />
           </AssociationSet>
@@ -235,7 +235,7 @@
             <End Role="OpeStatusType" EntitySet="OpeStatusType" />
             <End Role="Operatelog" EntitySet="Operatelog" />
           </AssociationSet>
-          <AssociationSet Name="FK__User__user_Type__619B8048" Association="Self.FK__User__user_Type__619B8048">
+          <AssociationSet Name="FK__User__user_Type__2A4B4B5E" Association="Self.FK__User__user_Type__2A4B4B5E">
             <End Role="UserType" EntitySet="UserType" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
@@ -252,8 +252,8 @@
           <Property Name="ad_UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ad_PassWord" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ad_Type" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AdminType" Relationship="Self.FK__Admin__ad_Type__37A5467C" FromRole="Admin" ToRole="AdminType" />
-          <NavigationProperty Name="Article" Relationship="Self.FK__Article__article__15502E78" FromRole="Admin" ToRole="Article" />
+          <NavigationProperty Name="AdminType" Relationship="Self.FK__Admin__ad_Type__239E4DCF" FromRole="Admin" ToRole="AdminType" />
+          <NavigationProperty Name="Article" Relationship="Self.FK__Article__article__24927208" FromRole="Admin" ToRole="Article" />
           <NavigationProperty Name="Operatelog" Relationship="Self.FK__Operatelo__log_O__17036CC0" FromRole="Admin" ToRole="Operatelog" />
         </EntityType>
         <EntityType Name="AdminType">
@@ -262,7 +262,7 @@
           </Key>
           <Property Name="Ad_TypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Ad_TypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Admin" Relationship="Self.FK__Admin__ad_Type__37A5467C" FromRole="AdminType" ToRole="Admin" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK__Admin__ad_Type__239E4DCF" FromRole="AdminType" ToRole="Admin" />
         </EntityType>
         <EntityType Name="Article">
           <Key>
@@ -279,8 +279,8 @@
           <Property Name="article_Status" Type="Boolean" />
           <Property Name="article_MakHtml" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="article_PV" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Admin" Relationship="Self.FK__Article__article__15502E78" FromRole="Article" ToRole="Admin" />
-          <NavigationProperty Name="ArticleType" Relationship="Self.FK__Article__article__239E4DCF" FromRole="Article" ToRole="ArticleType" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK__Article__article__24927208" FromRole="Article" ToRole="Admin" />
+          <NavigationProperty Name="ArticleType" Relationship="Self.FK__Article__article__25869641" FromRole="Article" ToRole="ArticleType" />
           <NavigationProperty Name="BlogsLeave" Relationship="Self.FK__BlogsLeav__leave__628FA481" FromRole="Article" ToRole="BlogsLeave" />
         </EntityType>
         <EntityType Name="ArticleType">
@@ -289,7 +289,7 @@
           </Key>
           <Property Name="article_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="type_Name" Type="String" MaxLength="55" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Article" Relationship="Self.FK__Article__article__239E4DCF" FromRole="ArticleType" ToRole="Article" />
+          <NavigationProperty Name="Article" Relationship="Self.FK__Article__article__25869641" FromRole="ArticleType" ToRole="Article" />
         </EntityType>
         <EntityType Name="BlogsLeave">
           <Key>
@@ -315,7 +315,7 @@
           <Key>
             <PropertyRef Name="log_Id" />
           </Key>
-          <Property Name="log_Id" Type="Int32" Nullable="false" />
+          <Property Name="log_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="log_Content" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="log_CreatDataTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="log_OperatelogAdmin" Type="Int32" Nullable="false" />
@@ -345,7 +345,7 @@
           <Property Name="user_Status" Type="Boolean" Nullable="false" />
           <Property Name="user_Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="BlogsLeave" Relationship="Self.FK__BlogsLeav__leave__5DCAEF64" FromRole="User" ToRole="BlogsLeave" />
-          <NavigationProperty Name="UserType" Relationship="Self.FK__User__user_Type__619B8048" FromRole="User" ToRole="UserType" />
+          <NavigationProperty Name="UserType" Relationship="Self.FK__User__user_Type__2A4B4B5E" FromRole="User" ToRole="UserType" />
         </EntityType>
         <EntityType Name="UserType">
           <Key>
@@ -353,9 +353,9 @@
           </Key>
           <Property Name="userType_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userType_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK__User__user_Type__619B8048" FromRole="UserType" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="Self.FK__User__user_Type__2A4B4B5E" FromRole="UserType" ToRole="User" />
         </EntityType>
-        <Association Name="FK__Admin__ad_Type__37A5467C">
+        <Association Name="FK__Admin__ad_Type__239E4DCF">
           <End Role="AdminType" Type="Self.AdminType" Multiplicity="1" />
           <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
           <ReferentialConstraint>
@@ -367,7 +367,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__article__15502E78">
+        <Association Name="FK__Article__article__24927208">
           <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -391,7 +391,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__article__239E4DCF">
+        <Association Name="FK__Article__article__25869641">
           <End Role="ArticleType" Type="Self.ArticleType" Multiplicity="1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -439,7 +439,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__User__user_Type__619B8048">
+        <Association Name="FK__User__user_Type__2A4B4B5E">
           <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
@@ -451,7 +451,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="db_CenSystemEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="db_CenSystemEntities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admin" EntityType="Self.Admin" />
           <EntitySet Name="AdminType" EntityType="Self.AdminType" />
           <EntitySet Name="Article" EntityType="Self.Article" />
@@ -462,11 +462,11 @@
           <EntitySet Name="OpeStatusType" EntityType="Self.OpeStatusType" />
           <EntitySet Name="User" EntityType="Self.User" />
           <EntitySet Name="UserType" EntityType="Self.UserType" />
-          <AssociationSet Name="FK__Admin__ad_Type__37A5467C" Association="Self.FK__Admin__ad_Type__37A5467C">
+          <AssociationSet Name="FK__Admin__ad_Type__239E4DCF" Association="Self.FK__Admin__ad_Type__239E4DCF">
             <End Role="AdminType" EntitySet="AdminType" />
             <End Role="Admin" EntitySet="Admin" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__article__15502E78" Association="Self.FK__Article__article__15502E78">
+          <AssociationSet Name="FK__Article__article__24927208" Association="Self.FK__Article__article__24927208">
             <End Role="Admin" EntitySet="Admin" />
             <End Role="Article" EntitySet="Article" />
           </AssociationSet>
@@ -474,7 +474,7 @@
             <End Role="Admin" EntitySet="Admin" />
             <End Role="Operatelog" EntitySet="Operatelog" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__article__239E4DCF" Association="Self.FK__Article__article__239E4DCF">
+          <AssociationSet Name="FK__Article__article__25869641" Association="Self.FK__Article__article__25869641">
             <End Role="ArticleType" EntitySet="ArticleType" />
             <End Role="Article" EntitySet="Article" />
           </AssociationSet>
@@ -490,7 +490,7 @@
             <End Role="OpeStatusType" EntitySet="OpeStatusType" />
             <End Role="Operatelog" EntitySet="Operatelog" />
           </AssociationSet>
-          <AssociationSet Name="FK__User__user_Type__619B8048" Association="Self.FK__User__user_Type__619B8048">
+          <AssociationSet Name="FK__User__user_Type__2A4B4B5E" Association="Self.FK__User__user_Type__2A4B4B5E">
             <End Role="UserType" EntitySet="UserType" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
@@ -500,7 +500,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="db_CenSystemModelStoreContainer" CdmEntityContainer="db_CenSystemEntities2">
+        <EntityContainerMapping StorageEntityContainer="db_CenSystemModelStoreContainer" CdmEntityContainer="db_CenSystemEntities4">
           <EntitySetMapping Name="Admin">
             <EntityTypeMapping TypeName="db_CenSystemModel.Admin">
               <MappingFragment StoreEntitySet="Admin">

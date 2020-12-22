@@ -1,0 +1,170 @@
+﻿
+@{
+    ViewBag.Title = "EditArticle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form class="layui-form" action="" style="background:#fff" lay-filter="example">
+    <div class="layui-form-item">
+        <label class="layui-form-label">文章标题</label>
+        <div class="layui-input-block">
+            <input type="text" name="article_Title" lay-verify="required" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-upload layui-form-item">
+        <label class="layui-form-label">图片上传</label>
+        <div style="display:flex">
+            <div class="layui-upload-drag" id="test10">
+                <i class="layui-icon"></i>
+                <p>点击上传，或将文件拖拽到此处</p>
+            </div>
+            <div style="width:200px;height:150px;margin:0 5px">
+                <img id="updataimg" style="width:100%;height:100%;" />
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">文章类型</label>
+        <div class="layui-input-block">
+            <select id="articletype" name="article_Type" lay-verify="required" lay-filter="aihao">
+                <option value="">文章分类</option>
+                <option value="1">C#</option>
+                <option value="2">Java</option>
+                <option value="3">JavaScript</option>
+                <option value="4">Vue</option>
+                <option value="5">Node</option>
+                <option value="6">其他文章</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">文章介绍</label>
+        <div class="layui-input-block">
+            <textarea placeholder="请输入内容" name="article_Content" lay-verify="required" class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div style="width:90%;margin:0 auto">
+        <div class="layui-progress layui-progress-big" lay-showpercent="true" lay-filter="js_upload_progress" style="margin: 10px;">
+            <div class="layui-progress-bar layui-bg-red" lay-percent="0%"></div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button type="submit" id="sub" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+        </div>
+    </div>
+
+</form>
+<div id="test-editor">
+    <textarea style="display:none;"></textarea>
+</div>
+
+<script src="~/Content/editormd/editormd.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        function getFormatDate() {
+            var date = new Date();
+            var month = date.getMonth() + 1;
+            var strDate = date.getDate();
+            if (month >= 1 && month <= 9) {
+                month = "0" + month;
+            }
+            if (strDate >= 0 && strDate <= 9) {
+                strDate = "0" + strDate;
+            }
+            var currentDate = date.getFullYear() + "-" + month + "-" + strDate
+                + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+            return currentDate;
+        }
+        var editor = editormd("test-editor", {
+            placeholder: '本编辑器支持Markdown编辑，左边编写，右边预览',  //默认显示的文字，这里就不解释了
+            width: "100%",
+            height: 800,
+            syncScrolling: "single",
+            path: "/Content/editormd/lib/",   //你的path路径（原资源文件中lib包在我们项目中所放的位置）
+            // theme: "dark",//工具栏主题
+            // previewTheme: "dark",//预览主题
+            // editorTheme: "pastel-on-dark",//编辑主题
+            saveHTMLToTextarea: true,
+        });
+        // markdown:
+        /*  layui.use 引入
+         form 表单模块
+         layedit 编辑
+         laydata 格式化时间模块
+         upload 上传模块
+         */
+        layui.use(['form', 'layedit', 'laydate', 'upload',], function () {
+            var form = layui.form
+                , layer = layui.layer
+                , layedit = layui.layedit
+                , laydate = layui.laydate
+                , upload = layui.upload
+                , element = layui.element;
+            upload.render({
+                elem: '#test10'
+                , url: '/Home/InsertArticle' //改成您自己的上传接口
+                , auto: false
+                , size: 5120   //kb  设置5mb
+                , choose: function (obj) {
+                    obj.preview(function (index, file, result) {
+                        $('#updataimg').attr('src', result); // 图片链接（base64）
+                        myFile = file;
+
+                    });
+                }
+                , progress: function (n, elem) {
+                    console.log(n)
+                    var percent = n + '%'
+                    element.progress("js_upload_progress", percent);
+                }
+                , data: {
+                    article_Title: () => { return $("input[name='article_Title']").val() },
+                    article_Type: () => { return $("#articletype option:selected").val()},
+                    article_Content: () => { return $("textarea[name='article_Content']").val() },
+                    article_MakCode: () => { return editor.getMarkdown() },
+                    article_MakHtml: () => { return editor.getHTML() },
+                    article_Status: () => { return false },
+                    article_CreatDateTime: () => { return getFormatDate() },
+                    article_CreatAdminId: () => { return $.cookie('AdminId') }
+                }
+                , before: function (obj) {
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function (index, file, result) {
+                        console.log(result)
+                        $('#updataimg').attr('src', result); //图片链接（base64）
+                    });
+                }
+                //,multiple: true
+                , drag: true
+                , bindAction: '#sub'
+                , done: function (res, file, result) {
+                    if (res.code == 0) {
+                        layer.msg(res.msg, { icon: 1 }, function () {
+                            window.location.href = "/Home/EditArticle"
+                        })
+                      
+                        return
+                    }
+                    layer.msg(res.msg, { icon: 2 })
+
+                }
+            });
+            /*
+             * 监听提交 处理图片上传 所以把提交的数据同意放在图片提交上传的data 里面同意提交
+             * 然后再让他触发 submit 提交form 表单
+             * 这样即可实现同时提交 然后 也不会使本身过滤器的表单验证失效
+            */
+            form.on('submit(demo1)', function (data) {
+                if (editor.getHTML() == "") {
+                    layer.msg("Markdown文本不能为空", { icon: 2 })
+                    return false;
+                }
+
+                return false;
+            });
+        });
+    })
+</script>

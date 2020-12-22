@@ -1,0 +1,150 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>blogs</title>
+    <script src="~/Scripts/jquery/jquery.3.1.min.js"></script>
+    <link href="~/Content/blogs/loding.css" rel="stylesheet" />
+    <link href="~/Content/blogs/amin.css" rel="stylesheet" />
+    <link href="~/Content/blogs/style.css" rel="stylesheet" />
+    <link href="~/Content/blogs/media.css" rel="stylesheet" />
+    <link href="~/Scripts/layui-v2.5.5/css/layui.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="Btn-Open" id="isOpen">
+        <i style="margin-top:12px;display: block;"></i>
+        <span class="span-btn1"></span>
+        <span class="span-btn2"></span>
+        <span class="span-btn3"></span>
+    </div>
+    <div class="Btn-Content" id="isActive">
+        <ul class="Text-right">
+            <li><a href="#">个人介绍</a></li>
+            <li><a href="#">资料分享</a></li>
+            <li><a href="#">博客</a></li>
+        </ul>
+    </div>
+    <section id="Seciton-1">
+        <div id="Seciton-text">
+            <div class="Seciton-tit">
+                <h1 id="show-h1" style="visibility: hidden; ">
+                    凌云壮志
+                    <br>
+                    <p>他日若遂凌云志,敢笑黄巢不丈夫</p>
+                    <br>
+                    <button class="layui-btn layui-btn-normal"><a href="/Blogs/blogs" style="display: block;width: 100%;height: 100%;color: #ffffff;">Enter Blog</a></button>
+                </h1>
+                <i class="layui-icon" id="top-Home" style="position: absolute;font-size: 40px;color: #ffffff;bottom:40px;">&#xe61a;</i>
+            </div>
+        </div>
+    </section>
+    <div style="position: relative;padding:40px 0;">
+        <div id="Setions-2">
+            <h1>热门文章</h1>
+            <div class="Sections-Warp">
+                <div class="Sections-left">
+                    <div class="Sections-imge">
+                        <i class="layui-icon layui-icon-picture-fine"></i>
+                        <img src="/images/1.jpg" alt="">
+                    </div>
+                    <p class="Sections-tops"><a href="read.html?id=24">我的第一个Node项目</a></p>
+                    <p class="Sections-datas"><span>2020年8月31日</span></p>
+                    <p class="Secitons-Texts">是一个基于Node 后台前台Layui的一个后台管理项目, 已经上传到Github</p>
+                    <p class="Sections-GoText"><a target="_blank" href="read.html?id=24">阅读文章</a></p>
+                </div>
+                <div class="Sections-center">
+                    <div class="Sections-imge">
+                        <i class="layui-icon layui-icon-picture-fine"></i>
+                        <img src="/images/2.jpg" alt="">
+                    </div>
+                    <p class="Sections-tops"><a href="read.html?id=25">不断的学习,杜绝焦虑</a></p>
+                    <p class="Sections-datas"><span>2020年8月31日</span></p>
+                    <p class="Secitons-Texts">孔子曰:"学而不思则罔,思而不学则殆"这句话的是我觉得很适合程序员这个行业的语句</p>
+                    <p class="Sections-GoText"><a href="read.html?id=25">阅读文章</a></p>
+                </div>
+                <div class="Sections-right">
+                    <div class="Sections-imge">
+                        <i class="layui-icon layui-icon-picture-fine"></i>
+                        <img src="/images/8.jpg" alt="">
+                    </div>
+                    <p class="Sections-tops"><a href="read.html?id=26">深夜静静地思考</a></p>
+                    <p class="Sections-datas"><span>2020年8月31日</span></p>
+                    <p class="Secitons-Texts">我个人比较喜欢晚上敲代码,晚上的时候会告别白天的喧嚣,晚上比较安静可以一个人安静的思考</p>
+                    <p class="Sections-GoText"><a href="read.html?id=26">阅读文章</a></p>
+                </div>
+            </div>
+        </div>
+        <!-- <i class="layui-icon" id="top-Home2" style="position: absolute;font-size: 40px;color:#000;bottom:0px;text-align: center;left: 0;right: 0;">&#xe61a;</i> -->
+    </div>
+    <div id="Sections-3">
+        <div class="Secitons3-box">
+            <div class="Sections3-Left">
+                <a href="#">关于</a>
+            </div>
+            <div class="Sections-Rigth">
+                <a href="#">+友情链接</a>
+            </div>
+        </div>
+    </div>
+    <div id="Sections-4">
+        <h2>牛角尖使者</h2>
+        <p>爱好钻研一些编程知识,比较喜欢前端的特效,励志成为一个编程大佬</p>
+    </div>
+    <div id="Footer-Box">
+        <div class="F0">
+            <p style="font-size: 22px;">凌云</p>
+            <br>
+            <p>他日若遂凌云志,敢笑黄巢不丈夫</p>
+            <br>
+            <button class="layui-btn layui-btn-normal"><a href="article.html">About ME</a></button>
+        </div>
+        <div class="F1">
+            <p style="font-size: 22px;width: 100%;"><a href="#">相关链接</a></p>
+            <ul class="F1-lists">
+                <li><a href="article.html"><i class="layui-icon layui-icon-read"></i>  博文</a></li>
+                <li><a href="#"><i class="layui-icon layui-icon-component"></i>  资源</a></li>
+                <li><a href="#"><i class="layui-icon layui-icon-release"></i>  归档</a></li>
+            </ul>
+            <ul class="F1-lists">
+                <li><a href="#"><i class="layui-icon layui-icon-survey"></i>  留言</a></li>
+                <li><a href="#"><i class="layui-icon layui-icon-form"></i>  日记</a></li>
+
+            </ul>
+        </div>
+        <div class="F3">
+            <ul class="F3-lists">
+                <li><a href="#"><i class="layui-icon layui-icon-location"></i>  地址: 河南省信阳市</a></li>
+                <li><a href="#"><i class="layui-icon layui-icon-website"></i>   业务: 网页代写</a></li>
+                <li><a href="#"><i class="layui-icon layui-icon-login-qq"></i>  QQ: 47790293</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-tit">
+        <p>Copyright @@2020 Cen All Rights Reserved V.1.0.0 备案号: <a href="#">ICP备18000000号</a></p>
+    </div>
+    <i id='GoTop'><svg t="1598780529799" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1492" width="50" height="50"><path d="M528 67.5l-16-16.7-15.9 16.7c-7.3 7.7-179.9 190.6-179.9 420.8 0 112 40 210.1 73.5 272.7l6.2 11.6H627l5.9-13c3.1-6.8 75-167.8 75-271.3 0-230.2-172.6-413.1-179.9-420.8z m-16 48.8c19 22.9 51.9 66.1 82.3 122.5H429.8c30.3-56.4 63.3-99.6 82.2-122.5z m86.3 612.2H422.5c-25.7-50.6-62.2-140.1-62.2-240.2 0-75 20.8-145.5 47.7-205.4h208.2c26.8 59.9 47.6 130.3 47.6 205.4-0.1 78.3-48.7 200.4-65.5 240.2z" fill="#1E9FFF" p-id="1493"></path><path d="M834.7 623.9H643.3l6.7-27.3c9.1-37 13.7-73.4 13.7-108.2 0-44.8-7.7-92-22.9-140.3l-17-54 49.1 28.3c99.8 57.6 161.8 164.7 161.8 279.5v22z m-135.9-44.2h90.9c-5.7-71-38.8-137.2-91.3-184.6 6.3 31.7 9.4 62.9 9.4 93.2 0.1 29.7-3 60.3-9 91.4zM380.1 623.9H189.3v-22.1c0-114.8 62-221.9 161.8-279.5l49.1-28.3-17 54c-15.2 48.3-22.9 95.5-22.9 140.3 0 34.5 4.5 71 13.4 108.4l6.4 27.2z m-145.8-44.2H325c-5.9-31.3-8.8-61.9-8.8-91.4 0-30.3 3.2-61.5 9.4-93.2-52.5 47.5-85.6 113.6-91.3 184.6zM512 529.5c-45 0-81.6-36.6-81.6-81.6s36.6-81.6 81.6-81.6 81.6 36.6 81.6 81.6-36.6 81.6-81.6 81.6z m0-119c-20.7 0-37.5 16.8-37.5 37.5s16.8 37.5 37.5 37.5 37.5-16.8 37.5-37.5-16.8-37.5-37.5-37.5z" fill="#1E9FFF" p-id="1494"></path><path d="M512 999.7l-20.3-20.3c-28.8-28.6-68.3-67.9-68.3-111.6 0-48.9 39.8-88.6 88.6-88.6 48.9 0 88.6 39.8 88.6 88.6 0 43.6-24.4 67.9-64.8 108.2L512 999.7z m0-176.4c-24.5 0-44.5 20-44.5 44.5 0 21.5 23.8 48.4 44.5 69.5 33.6-33.7 44.4-47 44.4-69.5 0.1-24.6-19.9-44.5-44.4-44.5z" fill="#1E9FFF" p-id="1495"></path></svg></i>
+    <div id="he">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script src="~/Scripts/layui-v2.5.5/layui.js"></script>
+    <script src="~/Scripts/blogs/top.js"></script>
+</body>
+</html>
+
+</html>
